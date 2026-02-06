@@ -633,3 +633,82 @@ html{scroll-behavior:smooth}
     color: #F6F0E6 !important;
   }
 }
+
+/* =========================
+   FINAL FIX — MOBILE HEADER INLINE (OVERRIDE)
+   ========================= */
+@media (max-width: 820px) {
+
+  /* Header : logo + nav sur la même ligne */
+  .site-header--center .header-centered{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:12px !important;
+    padding:10px 14px !important;
+    text-align:left !important;
+  }
+
+  .brand--center{
+    flex:0 0 auto !important;
+  }
+
+  .brand-logo--center{
+    height:44px !important;
+    width:auto !important;
+    max-width:none !important;
+  }
+
+  /* Nav en ligne, scrollable horizontal (pas de colonne/popup) */
+  .nav--center{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:10px !important;
+
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+
+    background:transparent !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    padding:0 !important;
+    margin:0 !important;
+
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap !important;
+  }
+
+  /* Cache la scrollbar horizontale (optionnel) */
+  .nav--center::-webkit-scrollbar{ height:0; }
+  .nav--center{ scrollbar-width:none; }
+
+  /* Liens : compacts */
+  .nav--center > a{
+    padding:8px 10px !important;
+    font-size:13px !important;
+    line-height:1 !important;
+  }
+
+  /* Icônes */
+  .nav--center .icon-btn{
+    width:38px !important;
+    height:38px !important;
+  }
+
+  /* CTA RDV */
+  .nav--center .nav-cta{
+    padding:10px 12px !important;
+    border-radius:999px !important;
+    background:#4B2E23 !important;
+    color:#F6F0E6 !important;
+    border:1px solid rgba(246,240,230,.35) !important;
+  }
+}
