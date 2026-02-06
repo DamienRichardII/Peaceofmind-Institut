@@ -569,3 +569,67 @@ html{scroll-behavior:smooth}
 ::-webkit-scrollbar-track{background:rgba(0,0,0,0.04)}
 ::-webkit-scrollbar-thumb{background:rgba(82,54,43,0.35);border-radius:999px;border:3px solid rgba(0,0,0,0);background-clip:content-box}
 ::-webkit-scrollbar-thumb:hover{background:rgba(82,54,43,0.55);border:3px solid rgba(0,0,0,0);background-clip:content-box}
+
+/* =========================
+   MOBILE HEADER FIX (CTA + SOCIAL)
+   ========================= */
+@media (max-width: 820px) {
+  .site-header .header-centered{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* Logo un peu plus compact */
+  .brand-logo--center{
+    max-width: 240px; /* ajuste si besoin */
+    height: auto;
+  }
+
+  /* Nav visible + draggable/wrap */
+  .nav--center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* Empêche certains CSS de cacher les CTA en mobile */
+  .nav--center .nav-cta,
+  .nav--center .icon-btn{
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Taille tap-friendly */
+  .nav--center a{
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  /* Icônes */
+  .icon-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+  }
+  .icon-btn svg{
+    width: 18px;
+    height: 18px;
+  }
+
+  /* CTA RDV: fond marron + texte blanc cassé */
+  .btn-primary,
+  .nav-cta{
+    background: #4B2E23;
+    color: #F6F0E6 !important;
+    border: 1px solid rgba(246,240,230,.35);
+  }
+
+  /* Si tu as un hover qui remet noir, on le neutralise */
+  .btn-primary:hover,
+  .nav-cta:hover{
+    color: #F6F0E6 !important;
+  }
+}
