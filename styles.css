@@ -630,3 +630,28 @@ html{scroll-behavior:smooth}
     flex-direction: column;
   }
 }
+/* =========================
+   FOOTER — Booksy button (mobile = same as web)
+   ========================= */
+.site-footer .footer-col a.btn{
+  display: inline-flex !important;   /* évite le bouton full width */
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+.site-footer .footer-col a.btn.btn-primary{
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(246,240,230,.35) !important;
+}
+
+.site-footer .footer-col a.btn.btn-primary:hover{
+  color: #FFFFFF !important;
+}
+
+/* Optionnel : sur mobile, garde le bouton bien “compact” */
+@media (max-width: 980px){
+  .site-footer .footer-col a.btn.btn-primary{
+    padding: 10px 16px !important;
+  }
+}
