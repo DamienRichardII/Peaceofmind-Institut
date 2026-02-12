@@ -308,7 +308,7 @@ hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 }
 .footer-inner{
   display:grid;
-  grid-template-columns: 1.2fr .6fr .6fr;
+  grid-template-columns: 1.2fr .8fr;
   gap: 14px;
 }
 .footer-col a{display:block;color:var(--muted);margin:8px 0}
