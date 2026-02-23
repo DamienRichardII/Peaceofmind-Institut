@@ -1,0 +1,1291 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Coffrets Signature — Peace of Mind Institut</title>
+<meta name="description" content="Infusions de fleurs véritables — Coffrets Signature Peace of Mind. Bio, Halal, Vegan. Livraison en France.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#4B2E23" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="canonical" href="https://peaceofmindsignature.com/signature.html">
+
+<!-- PayPal SDK — remplacer YOUR_CLIENT_ID par l'ID client PayPal de production -->
+<script id="paypal-script"
+  src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=EUR&locale=fr_FR&components=buttons,funding-eligibility&enable-funding=paylater,card"
+  data-sdk-integration-source="button-factory"
+  defer>
+</script>
+
+<style>
+/* ===== SIGNATURE PAGE STYLES ===== */
+.sig-hero {
+  padding: 52px 0 36px;
+  text-align: center;
+}
+.sig-hero h1 {
+  font-size: clamp(26px, 3.5vw, 42px);
+  margin-bottom: 14px;
+}
+.sig-hero .page-lead {
+  margin: 0 auto 18px;
+  text-align: center;
+}
+.cert-badges {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(75,46,35,.22);
+  background: rgba(255,255,255,.62);
+  font-size: 12px;
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* ===== PRODUCT GRID ===== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 40px 0;
+}
+.product-card {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(231,222,215,.85);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 64px rgba(17,17,17,.1);
+}
+.product-img-wrap {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: #ede8e2;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform .55s cubic-bezier(.25,.46,.45,.94);
+}
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.06);
+}
+/* Subtle gradient overlay at bottom to blend into card body */
+.product-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(247,244,241,0) 40%,
+    rgba(247,244,241,0.18) 70%,
+    rgba(255,255,255,0.82) 100%
+  );
+  pointer-events: none;
+}
+/* Coffret name badge floating top-left */
+.product-img-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(231,222,215,.7);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+/* Cure length badge floating top-right */
+.product-img-cure {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: var(--primary);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.product-body {
+  padding: 20px 20px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.product-name {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.product-tagline {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+.ingredient-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.ingredient-tag {
+  font-size: 11px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(75,46,35,.2);
+  color: var(--primary);
+  background: rgba(75,46,35,.05);
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .1em;
+}
+.product-price {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+.product-price-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.add-to-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(75,46,35,.3);
+  background: var(--primary);
+  color: #fff;
+  font-size: 13px;
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease, background .15s ease;
+  margin-top: auto;
+}
+.add-to-cart-btn:hover {
+  transform: translateY(-1px);
+  background: #3a2218;
+}
+.add-to-cart-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ===== CURE INFO BANNER ===== */
+.cure-banner {
+  background: rgba(75,46,35,.06);
+  border: 1px solid rgba(75,46,35,.15);
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 36px 0;
+}
+.cure-stat {
+  text-align: center;
+}
+.cure-stat-num {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.cure-stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ===== FLOATING CART ===== */
+.cart-bubble {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+}
+.cart-toggle-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 40px rgba(75,46,35,.3);
+  transition: transform .18s ease;
+  position: relative;
+}
+.cart-toggle-btn:hover { transform: scale(1.06); }
+.cart-toggle-btn svg { width: 24px; height: 24px; }
+.cart-count-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #c0392b;
+  color: #fff;
+  border-radius: 999px;
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", system-ui, sans-serif;
+  border: 2px solid #fff;
+  transition: transform .15s ease;
+}
+.cart-count-badge[data-count="0"] { display: none; }
+
+/* ===== CART DRAWER ===== */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17,17,17,.45);
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  backdrop-filter: blur(4px);
+}
+.cart-drawer-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.cart-drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(440px, 100vw);
+  background: var(--bg);
+  z-index: 301;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  box-shadow: -16px 0 60px rgba(17,17,17,.12);
+}
+.cart-drawer.is-open {
+  transform: translateX(0);
+}
+.cart-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.cart-drawer-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--text);
+}
+.cart-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.55);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease;
+}
+.cart-close-btn:hover { background: rgba(255,255,255,.9); }
+.cart-close-btn svg { width: 16px; height: 16px; }
+.cart-items-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,.62);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+}
+.cart-item-name {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text);
+  flex: 1;
+}
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.7);
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .12s ease;
+  color: var(--text);
+}
+.qty-btn:hover { background: #fff; }
+.qty-num {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+.cart-item-price {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-left: 8px;
+  min-width: 52px;
+  text-align: right;
+}
+.cart-empty-msg {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 48px 0;
+}
+.cart-footer {
+  padding: 18px 24px 28px;
+  border-top: 1px solid var(--line);
+}
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 18px;
+}
+.cart-total-label {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--muted);
+}
+.cart-total-amount {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ===== CHECKOUT MODAL ===== */
+.checkout-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17,17,17,.55);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  backdrop-filter: blur(6px);
+}
+.checkout-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.checkout-modal {
+  background: var(--bg);
+  border-radius: 26px;
+  width: min(560px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(17,17,17,.2);
+  padding: 32px 32px 28px;
+  position: relative;
+}
+.checkout-modal-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 0 0 24px;
+  color: var(--text);
+}
+.checkout-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkout-close svg { width: 16px; height: 16px; }
+.form-group {
+  margin-bottom: 16px;
+}
+.form-label {
+  display: block;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.72);
+  font-family: "Raleway", system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s ease;
+}
+.form-input:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.checkout-order-summary {
+  background: rgba(75,46,35,.05);
+  border: 1px solid rgba(75,46,35,.12);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.checkout-order-summary-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.checkout-summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+  padding: 5px 0;
+  border-top: 1px solid rgba(231,222,215,.6);
+}
+.checkout-summary-item:first-of-type {
+  border-top: none;
+}
+.checkout-total-final {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(75,46,35,.18);
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 16px;
+}
+.payment-section-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 20px 0 12px;
+}
+#paypal-button-container {
+  margin-top: 0;
+}
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  justify-content: center;
+}
+.security-note svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* Success screen */
+.checkout-success {
+  text-align: center;
+  padding: 28px 0 16px;
+  display: none;
+}
+.checkout-success.is-visible { display: block; }
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(75,46,35,.08);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.success-icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+}
+.checkout-form-body { transition: opacity .25s ease; }
+.checkout-form-body.is-hidden { display: none; }
+
+/* ===== RESPONSIVE — TABLET 900px ===== */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .cure-banner {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 18px 16px;
+  }
+  .cure-stat-num { font-size: 22px; }
+}
+
+/* ===== RESPONSIVE — MOBILE 640px ===== */
+@media (max-width: 640px) {
+  /* Hero */
+  .sig-hero {
+    padding: 32px 0 22px;
+  }
+  .sig-hero h1 {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+  .cert-badges {
+    gap: 8px;
+  }
+  .cert-badge {
+    font-size: 10px;
+    padding: 6px 10px;
+    letter-spacing: .1em;
+  }
+
+  /* Cure banner → row horizontal compact */
+  .cure-banner {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 14px 12px;
+    gap: 6px;
+    margin: 20px 0;
+  }
+  .cure-stat-num { font-size: 20px; }
+  .cure-stat-label { font-size: 10px; letter-spacing: 0; }
+
+  /* Products → single column */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  /* Product image shorter on mobile */
+  .product-img-wrap {
+    height: 220px;
+  }
+
+  .product-body {
+    padding: 16px 16px 18px;
+  }
+
+  .product-name { font-size: 13px; }
+  .product-price { font-size: 20px; }
+
+  /* Cart bubble — safe area + avoid scroll nav overlap */
+  .cart-bubble {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
+  }
+  .cart-toggle-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  /* Cart drawer full width on mobile */
+  .cart-drawer {
+    width: 100vw;
+    border-radius: 20px 20px 0 0;
+    top: auto;
+    bottom: 0;
+    height: 82vh;
+    transform: translateY(100%);
+  }
+  .cart-drawer.is-open {
+    transform: translateY(0);
+  }
+  .cart-drawer-header {
+    padding: 16px 18px 14px;
+  }
+  /* Drag handle visual hint */
+  .cart-drawer-header::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.12);
+  }
+  .cart-items-list {
+    padding: 14px 16px;
+  }
+  .cart-footer {
+    padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Checkout modal — full screen bottom sheet */
+  .checkout-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .checkout-modal {
+    width: 100vw;
+    max-height: 95vh;
+    border-radius: 22px 22px 0 0;
+    padding: 24px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+  .checkout-modal::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.12);
+    margin: 0 auto 20px;
+  }
+  .checkout-close {
+    top: 14px;
+    right: 14px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .form-input {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+}
+
+/* ===== RESPONSIVE — SMALL MOBILE 380px ===== */
+@media (max-width: 380px) {
+  .product-img-wrap { height: 190px; }
+  .cure-banner { grid-template-columns: 1fr; gap: 0; }
+  .cure-stat {
+    padding: 8px 0;
+    border-top: 1px solid rgba(75,46,35,.1);
+  }
+  .cure-stat:first-child { border-top: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header site-header--center">
+  <div class="container header-centered">
+    <a class="brand brand--center" href="index.html" aria-label="Accueil">
+      <img src="assets/logo.png" alt="Peace of Mind" class="brand-logo brand-logo--center" />
+    </a>
+    <nav class="nav nav--center" aria-label="Navigation principale">
+      <a href="expertise.html">Expertise</a>
+      <a href="menu.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="contact.html">Contact</a>
+      <a class="icon-btn" href="https://www.instagram.com/peaceofmind.inst/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 4.5A5 5 0 1 1 7 12a5 5 0 0 1 5-3.5Zm0 2A3 3 0 1 0 15 12a3 3 0 0 0-3-3Zm5.25-2.4a1.15 1.15 0 1 1-1.15 1.15 1.15 1.15 0 0 1 1.15-1.15Z"></path></svg>
+      </a>
+      <a class="icon-btn" href="https://www.tiktok.com/@peaceofmind.inst" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3v10.1a3.9 3.9 0 1 1-3.2-3.83v2.1a1.9 1.9 0 1 0 1.2 1.77V3h2Zm2 0c.5 2.8 2.7 5 5.5 5.5v2c-2.2-.1-4.1-1-5.5-2.4V3Z"></path></svg>
+      </a>
+      <a class="btn btn-primary nav-cta" href="https://booksy.com/fr-fr/70501_peace-of-mind_instituts-de-beaute_80450_gradignan?do=invite&_branch_match_id=1548043816304364084&utm_medium=profile_share_from_profile&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVd%2FcqCCoq8MuoMEiyrytKTUstKsrMS49PKsovL04tsnXOKMrPTQUAaU6HSDwAAAA%3D" target="_blank" rel="noopener">Prendre RDV</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="page">
+
+  <!-- Hero -->
+  <section class="sig-hero">
+    <p class="kicker">Collection Signature • Peace of Mind Institut</p>
+    <h1>Coffrets Infusions de Fleurs</h1>
+    <p class="page-lead">Des infusions envoûtantes à base de fleurs véritables, conçues pour votre bien-être au quotidien. Chaque coffret est une cure de 28 jours.</p>
+    <div class="cert-badges">
+      <span class="cert-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.71C6.66 19 7.66 17.29 8.67 16C10.97 17.03 13.19 17.67 16.09 16.45C17.31 15.93 18 14.83 18 13.55V3L17 8Z"/></svg>
+        Bio
+      </span>
+      <span class="cert-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        Halal
+      </span>
+      <span class="cert-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 22c-4.97 0-9-4.03-9-9c0-4.17 2.84-7.67 6.7-8.66L12 4l2.3.34C18.16 5.33 21 8.83 21 13c0 4.97-4.03 9-9 9z"/></svg>
+        Vegan
+      </span>
+      <span class="cert-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm-7 13c0-2.21 3.13-4 7-4s7 1.79 7 4v1H5v-1z"/></svg>
+        Femmes enceintes &amp; allaitantes
+      </span>
+    </div>
+  </section>
+
+  <!-- Stats cure -->
+  <div class="cure-banner">
+    <div class="cure-stat">
+      <span class="cure-stat-num">14</span>
+      <span class="cure-stat-label">Sachets de fleurs véritables</span>
+    </div>
+    <div class="cure-stat">
+      <span class="cure-stat-num">28</span>
+      <span class="cure-stat-label">Jours de cure</span>
+    </div>
+    <div class="cure-stat">
+      <span class="cure-stat-num">29€</span>
+      <span class="cure-stat-label">Par coffret</span>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="products-grid">
+
+    <!-- Origins -->
+    <article class="product-card" data-id="origins" data-name="Coffret Origins" data-price="29">
+      <div class="product-img-wrap">
+        <img src="assets/coffret-origins.jpg" alt="Coffret Origins — Peace of Mind">
+        <span class="product-img-badge">Signature</span>
+        <span class="product-img-cure">28 jours</span>
+      </div>
+      <div class="product-body">
+        <h2 class="product-name">Coffret Origins</h2>
+        <p class="product-tagline">Pour la circulation sanguine, les crampes, les jambes lourdes, les douleurs menstruelles, les problèmes urinaires et la vision.</p>
+        <div class="ingredient-tags">
+          <span class="ingredient-tag">Chrysanthème</span>
+          <span class="ingredient-tag">Cassia</span>
+          <span class="ingredient-tag">Aubépine</span>
+          <span class="ingredient-tag">Pissenlit</span>
+          <span class="ingredient-tag">Kumquat</span>
+          <span class="ingredient-tag">Bardane</span>
+          <span class="ingredient-tag">Cristaux sucre</span>
+        </div>
+        <div class="product-price">29 €</div>
+        <p class="product-price-note">Cure 28 jours — 14 sachets — 2 infusions / sachet</p>
+        <button class="add-to-cart-btn" onclick="addToCart('origins','Coffret Origins',29)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Ajouter au panier
+        </button>
+      </div>
+    </article>
+
+    <!-- Relive -->
+    <article class="product-card" data-id="relive" data-name="Coffret Relive" data-price="29">
+      <div class="product-img-wrap">
+        <img src="assets/coffret-relive.jpg" alt="Coffret Relive — Peace of Mind">
+        <span class="product-img-badge">Signature</span>
+        <span class="product-img-cure">28 jours</span>
+      </div>
+      <div class="product-body">
+        <h2 class="product-name">Coffret Relive</h2>
+        <p class="product-tagline">Système immunitaire sain, detox et remède pour les poumons, le foie, les reins et les articulations.</p>
+        <div class="ingredient-tags">
+          <span class="ingredient-tag">Chrysanthème</span>
+          <span class="ingredient-tag">Cassia</span>
+          <span class="ingredient-tag">Réglisse</span>
+          <span class="ingredient-tag">Menthe</span>
+          <span class="ingredient-tag">Datte rouge</span>
+          <span class="ingredient-tag">Goji</span>
+        </div>
+        <div class="product-price">29 €</div>
+        <p class="product-price-note">Cure 28 jours — 14 sachets — 2 infusions / sachet</p>
+        <button class="add-to-cart-btn" onclick="addToCart('relive','Coffret Relive',29)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Ajouter au panier
+        </button>
+      </div>
+    </article>
+
+    <!-- Myself -->
+    <article class="product-card" data-id="myself" data-name="Coffret Myself" data-price="29">
+      <div class="product-img-wrap">
+        <img src="assets/coffret-myself.jpg" alt="Coffret Myself — Peace of Mind">
+        <span class="product-img-badge">Signature</span>
+        <span class="product-img-cure">28 jours</span>
+      </div>
+      <div class="product-body">
+        <h2 class="product-name">Coffret Myself</h2>
+        <p class="product-tagline">Remède contre l'acné, la couperose, les dermatoses. Riche en fer, zinc, calcium et magnésium. Idéal pour les femmes enceintes.</p>
+        <div class="ingredient-tags">
+          <span class="ingredient-tag">Chrysanthème</span>
+          <span class="ingredient-tag">Iongan</span>
+          <span class="ingredient-tag">Goji &amp; Rose</span>
+          <span class="ingredient-tag">Raisin</span>
+          <span class="ingredient-tag">Kumquat</span>
+          <span class="ingredient-tag">Datte rouge</span>
+          <span class="ingredient-tag">Cristaux sucre</span>
+        </div>
+        <div class="product-price">29 €</div>
+        <p class="product-price-note">Cure 28 jours — 14 sachets — 2 infusions / sachet</p>
+        <button class="add-to-cart-btn" onclick="addToCart('myself','Coffret Myself',29)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Ajouter au panier
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Infusion tips -->
+  <section class="card" style="margin-top:8px; padding:28px 28px;">
+    <p class="kicker" style="margin-bottom:10px;">Recommandations</p>
+    <p style="color:var(--muted); line-height:1.7; margin:0;">Laissez infuser <strong>3 minutes</strong> avant de consommer. À servir <strong>frais ou chaud</strong> selon les envies. 1 sachet = 2 infusions. La durée de la cure est de <strong>28 jours</strong>.</p>
+  </section>
+
+</main>
+
+<!-- ===== FLOATING CART BUTTON ===== -->
+<div class="cart-bubble">
+  <button class="cart-toggle-btn" onclick="toggleCart()" aria-label="Panier">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <span class="cart-count-badge" id="cart-badge" data-count="0">0</span>
+  </button>
+</div>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-drawer-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Panier" aria-modal="true">
+  <div class="cart-drawer-header">
+    <span class="cart-drawer-title">Mon Panier</span>
+    <button class="cart-close-btn" onclick="toggleCart()" aria-label="Fermer le panier">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items-list" id="cart-items-list">
+    <p class="cart-empty-msg">Votre panier est vide.</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cart-total">0,00 €</span>
+    </div>
+    <button class="add-to-cart-btn" onclick="openCheckout()" id="checkout-btn" style="opacity:.4;pointer-events:none;">
+      Passer la commande
+    </button>
+  </div>
+</aside>
+
+<!-- ===== CHECKOUT MODAL ===== -->
+<div class="checkout-overlay" id="checkout-overlay" role="dialog" aria-modal="true" aria-label="Paiement">
+  <div class="checkout-modal">
+    <button class="checkout-close" onclick="closeCheckout()" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 class="checkout-modal-title">Finaliser la commande</h2>
+
+    <!-- Form -->
+    <div class="checkout-form-body" id="checkout-form-body">
+      <div class="checkout-order-summary" id="checkout-summary"></div>
+
+      <p class="form-label" style="margin-bottom:14px;color:var(--primary);">Vos coordonnées</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="field-prenom">Prénom</label>
+          <input class="form-input" type="text" id="field-prenom" placeholder="Prénom" autocomplete="given-name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field-nom">Nom</label>
+          <input class="form-input" type="text" id="field-nom" placeholder="Nom" autocomplete="family-name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-email">E-mail</label>
+        <input class="form-input" type="email" id="field-email" placeholder="votre@email.com" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-tel">Téléphone</label>
+        <input class="form-input" type="tel" id="field-tel" placeholder="+33 6 00 00 00 00" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="field-adresse">Adresse de livraison</label>
+        <input class="form-input" type="text" id="field-adresse" placeholder="N° et rue" autocomplete="street-address" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="field-cp">Code postal</label>
+          <input class="form-input" type="text" id="field-cp" placeholder="33000" autocomplete="postal-code" maxlength="10" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="field-ville">Ville</label>
+          <input class="form-input" type="text" id="field-ville" placeholder="Bordeaux" autocomplete="address-level2" required>
+        </div>
+      </div>
+
+      <p class="payment-section-title">Paiement sécurisé</p>
+      <div id="paypal-button-container"></div>
+
+      <div class="security-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Paiement 100 % sécurisé — SSL / TLS chiffré
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="checkout-success" id="checkout-success">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3 style="font-family:'Montserrat',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:15px;margin:0 0 10px;">Commande confirmée !</h3>
+      <p style="color:var(--muted);font-size:14px;line-height:1.6;">Merci pour votre confiance. Un e-mail de confirmation vous a été envoyé. Votre coffret sera expédié sous 48 h.</p>
+      <button class="add-to-cart-btn" style="margin-top:24px;max-width:260px;margin-left:auto;margin-right:auto;" onclick="closeCheckout();resetCart();">Continuer mes achats</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="footer-title">Peace of Mind Institut</div>
+      <p class="muted">Soins premium et personnalisés.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Réservation</div>
+      <a class="btn btn-primary" style="color:#FFFFFF !important;" href="https://booksy.com/fr-fr/70501_peace-of-mind_instituts-de-beaute_80450_gradignan?do=invite&_branch_match_id=1548043816304364084&utm_medium=profile_share_from_profile&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT07J0UvKz88urtRLzs%2FVd%2FcqCCoq8MuoMEiyrytKTUstKsrMS49PKsovL04tsnXOKMrPTQUAaU6HSDwAAAA%3D" target="_blank" rel="noopener">Booksy</a>
+      <div class="muted small">V1 : Booksy • V2 : réservation directe</div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span class="muted small">© Peace of Mind Institut — Tous droits réservés.</span>
+  </div>
+</footer>
+
+<script src="./assets/scroll-nav.js"></script>
+
+<script>
+/* ========================================
+   CART — state & helpers
+   ======================================== */
+let cart = {}; // { id: { name, price, qty } }
+
+function addToCart(id, name, price) {
+  if (cart[id]) {
+    cart[id].qty++;
+  } else {
+    cart[id] = { name, price, qty: 1 };
+  }
+  renderCart();
+  openCartDrawer();
+}
+
+function updateQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) delete cart[id];
+  renderCart();
+}
+
+function cartTotal() {
+  return Object.values(cart).reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+function cartCount() {
+  return Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+}
+
+function renderCart() {
+  const list = document.getElementById('cart-items-list');
+  const badge = document.getElementById('cart-badge');
+  const totalEl = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
+  const count = cartCount();
+  const total = cartTotal();
+
+  badge.textContent = count;
+  badge.setAttribute('data-count', count);
+  totalEl.textContent = total.toFixed(2).replace('.', ',') + ' €';
+  checkoutBtn.style.opacity = count > 0 ? '1' : '.4';
+  checkoutBtn.style.pointerEvents = count > 0 ? 'auto' : 'none';
+
+  if (count === 0) {
+    list.innerHTML = '<p class="cart-empty-msg">Votre panier est vide.</p>';
+    return;
+  }
+
+  list.innerHTML = Object.entries(cart).map(([id, item]) => `
+    <div class="cart-item">
+      <span class="cart-item-name">${escapeHtml(item.name)}</span>
+      <div class="cart-item-controls">
+        <button class="qty-btn" onclick="updateQty('${id}',-1)" aria-label="Diminuer">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="updateQty('${id}',1)" aria-label="Augmenter">+</button>
+      </div>
+      <span class="cart-item-price">${(item.price * item.qty).toFixed(2).replace('.',',')} €</span>
+    </div>
+  `).join('');
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function resetCart() {
+  cart = {};
+  renderCart();
+}
+
+/* Cart drawer */
+function openCartDrawer() {
+  document.getElementById('cart-drawer').classList.add('is-open');
+  document.getElementById('cart-overlay').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCartDrawer() {
+  document.getElementById('cart-drawer').classList.remove('is-open');
+  document.getElementById('cart-overlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+function toggleCart() {
+  const d = document.getElementById('cart-drawer');
+  if (d.classList.contains('is-open')) closeCartDrawer();
+  else openCartDrawer();
+}
+
+/* Checkout modal */
+function openCheckout() {
+  if (cartCount() === 0) return;
+  closeCartDrawer();
+  renderCheckoutSummary();
+  document.getElementById('checkout-overlay').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  initPayPalButtons();
+}
+
+function closeCheckout() {
+  document.getElementById('checkout-overlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+  // Reset success
+  document.getElementById('checkout-form-body').classList.remove('is-hidden');
+  document.getElementById('checkout-success').classList.remove('is-visible');
+}
+
+function renderCheckoutSummary() {
+  const total = cartTotal();
+  const items = Object.values(cart).map(i =>
+    `<div class="checkout-summary-item"><span>${escapeHtml(i.name)} × ${i.qty}</span><span>${(i.price*i.qty).toFixed(2).replace('.',',')} €</span></div>`
+  ).join('');
+  document.getElementById('checkout-summary').innerHTML = `
+    <div class="checkout-order-summary-title">Récapitulatif</div>
+    ${items}
+    <div class="checkout-total-final">
+      <span>Total</span>
+      <span>${total.toFixed(2).replace('.',',')} €</span>
+    </div>
+  `;
+}
+
+/* ========================================
+   PAYPAL integration
+   PayPal JS SDK is loaded in <head>
+   The client-id must be set in admin.html
+   and saved in localStorage key: pom_paypal_client_id
+   ======================================== */
+let paypalRendered = false;
+
+function initPayPalButtons() {
+  // Check if a custom client_id was saved via admin panel
+  const savedClientId = localStorage.getItem('pom_paypal_client_id');
+  const scriptEl = document.getElementById('paypal-script');
+
+  if (savedClientId && scriptEl.src.includes('YOUR_CLIENT_ID')) {
+    // Update src with real client ID (works on first load, requires page reload otherwise)
+    scriptEl.src = scriptEl.src.replace('YOUR_CLIENT_ID', savedClientId);
+  }
+
+  if (paypalRendered) return;
+  const container = document.getElementById('paypal-button-container');
+  container.innerHTML = ''; // clear
+
+  if (typeof paypal === 'undefined') {
+    container.innerHTML = '<p style="color:var(--muted);font-size:13px;text-align:center;padding:12px 0;">Configuration PayPal en attente.<br>Configurez votre compte dans <a href=\'admin.html\' style=\'color:var(--primary)\'>l\'espace admin</a>.</p>';
+    return;
+  }
+
+  paypalRendered = true;
+
+  paypal.Buttons({
+    style: {
+      layout: 'vertical',
+      color: 'gold',
+      shape: 'pill',
+      label: 'pay',
+    },
+    fundingSource: undefined, // shows PayPal + card + Apple Pay if eligible
+
+    createOrder: function(data, actions) {
+      const fields = collectFormFields();
+      if (!fields.valid) { alert('Veuillez remplir tous les champs obligatoires.'); return; }
+
+      const items = Object.values(cart).map(i => ({
+        name: i.name,
+        quantity: String(i.qty),
+        unit_amount: { value: i.price.toFixed(2), currency_code: 'EUR' },
+        category: 'PHYSICAL_GOODS',
+      }));
+
+      return actions.order.create({
+        purchase_units: [{
+          description: 'Coffrets Infusions — Peace of Mind Institut',
+          amount: {
+            currency_code: 'EUR',
+            value: cartTotal().toFixed(2),
+            breakdown: {
+              item_total: { currency_code: 'EUR', value: cartTotal().toFixed(2) }
+            }
+          },
+          items,
+          shipping: {
+            name: { full_name: fields.prenom + ' ' + fields.nom },
+            address: {
+              address_line_1: fields.adresse,
+              postal_code: fields.cp,
+              city: fields.ville,
+              country_code: 'FR',
+            }
+          }
+        }],
+        application_context: { shipping_preference: 'SET_PROVIDED_ADDRESS' }
+      });
+    },
+
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        showSuccess();
+      });
+    },
+
+    onError: function(err) {
+      console.error('PayPal error', err);
+      alert('Une erreur est survenue lors du paiement. Veuillez réessayer.');
+    }
+  }).render('#paypal-button-container');
+}
+
+function collectFormFields() {
+  const prenom = document.getElementById('field-prenom').value.trim();
+  const nom = document.getElementById('field-nom').value.trim();
+  const email = document.getElementById('field-email').value.trim();
+  const adresse = document.getElementById('field-adresse').value.trim();
+  const cp = document.getElementById('field-cp').value.trim();
+  const ville = document.getElementById('field-ville').value.trim();
+  const valid = prenom && nom && email && adresse && cp && ville;
+  return { prenom, nom, email, adresse, cp, ville, valid };
+}
+
+function showSuccess() {
+  document.getElementById('checkout-form-body').classList.add('is-hidden');
+  document.getElementById('checkout-success').classList.add('is-visible');
+  resetCart();
+}
+
+/* Keyboard accessibility */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeCheckout();
+    closeCartDrawer();
+  }
+});
+
+/* Init */
+renderCart();
+</script>
+</body>
+</html>

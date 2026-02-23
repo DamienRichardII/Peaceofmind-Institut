@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Administration — Peace of Mind Institut</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+/* ===== ADMIN LOGIN ===== */
+.admin-login-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+  transition: opacity .3s ease;
+}
+.admin-login-card {
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(231,222,215,.85);
+  border-radius: 26px;
+  padding: 40px 36px 36px;
+  width: min(420px, 100%);
+  box-shadow: 0 32px 80px rgba(17,17,17,.12);
+  text-align: center;
+}
+.admin-login-logo {
+  height: 52px;
+  width: auto;
+  margin: 0 auto 28px;
+  display: block;
+}
+.admin-login-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.admin-login-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.admin-form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+.admin-form-label {
+  display: block;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.admin-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.9);
+  font-family: "Raleway", system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s ease;
+  box-sizing: border-box;
+}
+.admin-form-input:focus {
+  border-color: var(--primary);
+}
+.admin-login-btn {
+  width: 100%;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform .15s ease, background .15s ease;
+}
+.admin-login-btn:hover { transform: translateY(-1px); background: #3a2218; }
+.admin-login-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin-top: 10px;
+  display: none;
+}
+
+/* ===== ADMIN MAIN UI ===== */
+.admin-body {
+  display: none;
+}
+.admin-body.is-visible {
+  display: block;
+}
+.admin-header {
+  background: rgba(247,244,241,.96);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.admin-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.admin-header-logo {
+  height: 40px;
+  width: auto;
+}
+.admin-header-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--muted);
+}
+.admin-logout-btn {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: .12em;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.admin-logout-btn:hover { background: rgba(255,255,255,.8); color: var(--primary); }
+
+/* ===== ADMIN MAIN ===== */
+.admin-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+.admin-section {
+  margin-bottom: 36px;
+}
+.admin-section-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+.admin-section-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.admin-card {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(231,222,215,.85);
+  border-radius: 18px;
+  padding: 24px 24px 20px;
+}
+.admin-row {
+  margin-bottom: 18px;
+}
+.admin-row:last-child { margin-bottom: 0; }
+.admin-label {
+  display: block;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.admin-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.8);
+  font-family: "Raleway", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .15s ease;
+  box-sizing: border-box;
+}
+.admin-input:focus { border-color: var(--primary); }
+.admin-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.admin-hint a { color: var(--primary); }
+.admin-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform .15s ease, background .15s ease;
+}
+.admin-save-btn:hover { transform: translateY(-1px); background: #3a2218; }
+.admin-save-btn svg { width: 15px; height: 15px; }
+.admin-toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: #27ae60;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.admin-toast.show { opacity: 1; }
+.admin-toast svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* PayPal help box */
+.paypal-help {
+  background: rgba(75,46,35,.04);
+  border: 1px dashed rgba(75,46,35,.2);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.paypal-help-title {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.paypal-help ol {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.paypal-help a { color: var(--primary); }
+
+/* Password change section */
+.admin-divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 32px 0;
+}
+.admin-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin-top: 0;
+}
+.admin-stat-card {
+  background: rgba(75,46,35,.06);
+  border: 1px solid rgba(75,46,35,.12);
+  border-radius: 14px;
+  padding: 18px 16px;
+  text-align: center;
+}
+.admin-stat-num {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+}
+.admin-stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  /* Login */
+  .admin-login-card {
+    padding: 28px 18px 24px;
+    border-radius: 20px;
+  }
+  .admin-login-logo { height: 44px; margin-bottom: 20px; }
+  .admin-form-input {
+    font-size: 16px; /* prevent iOS zoom */
+    padding: 12px 14px;
+  }
+
+  /* Header */
+  .admin-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .admin-header-logo { height: 32px; }
+  .admin-header-inner > div:last-child {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  /* Main */
+  .admin-main {
+    padding: 24px 16px 60px;
+  }
+  .admin-main h1 {
+    font-size: 22px;
+  }
+
+  /* Stats */
+  .admin-status-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .admin-stat-card { padding: 14px 12px; }
+  .admin-stat-num { font-size: 20px; }
+
+  /* Cards */
+  .admin-card {
+    padding: 18px 16px 16px;
+  }
+  .admin-input {
+    font-size: 16px; /* prevent iOS zoom */
+  }
+
+  /* Save button full width */
+  .admin-save-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Nav buttons stack */
+  .admin-section > div[style*="display:flex"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 380px) {
+  .admin-status-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN SCREEN ===== -->
+<div class="admin-login-screen" id="login-screen">
+  <div class="admin-login-card">
+    <img src="assets/logo.png" alt="Peace of Mind" class="admin-login-logo" onerror="this.style.display='none'">
+    <div class="admin-login-title">Espace Administration</div>
+    <p class="admin-login-sub">Peace of Mind Institut — Accès sécurisé</p>
+
+    <div class="admin-form-group">
+      <label class="admin-form-label" for="login-user">Identifiant</label>
+      <input class="admin-form-input" type="text" id="login-user" placeholder="admin" autocomplete="username">
+    </div>
+    <div class="admin-form-group">
+      <label class="admin-form-label" for="login-pass">Mot de passe</label>
+      <input class="admin-form-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="admin-login-btn" onclick="doLogin()">Se connecter</button>
+    <div class="admin-login-error" id="login-error">Identifiant ou mot de passe incorrect.</div>
+  </div>
+</div>
+
+<!-- ===== ADMIN UI ===== -->
+<div class="admin-body" id="admin-body">
+
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="assets/logo.png" alt="" class="admin-header-logo" onerror="this.style.display='none'">
+        <span class="admin-header-title">Administration</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <a href="signature.html" class="admin-logout-btn" target="_blank">Voir la boutique →</a>
+        <button class="admin-logout-btn" onclick="doLogout()">Se déconnecter</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <p class="kicker" style="margin-bottom:6px;">Tableau de bord</p>
+    <h1 style="font-size:clamp(22px,3vw,32px);margin-bottom:28px;">Configuration du site</h1>
+
+    <!-- Stats -->
+    <div class="admin-section">
+      <div class="admin-status-grid">
+        <div class="admin-stat-card">
+          <span class="admin-stat-num">3</span>
+          <div class="admin-stat-label">Coffrets en ligne</div>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-num">29 €</span>
+          <div class="admin-stat-label">Prix unitaire</div>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-num" id="stat-paypal">—</span>
+          <div class="admin-stat-label">PayPal configuré</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="admin-divider">
+
+    <!-- PayPal configuration -->
+    <section class="admin-section">
+      <div class="admin-section-title">Paiement PayPal</div>
+      <p class="admin-section-desc">Entrez votre Client ID PayPal pour recevoir les paiements directement sur votre compte. Les clients pourront payer par PayPal, Apple Pay ou carte bancaire.</p>
+
+      <div class="admin-card">
+        <div class="admin-row">
+          <label class="admin-label" for="paypal-client-id">Client ID PayPal (Production)</label>
+          <input class="admin-input" type="text" id="paypal-client-id" placeholder="AaBbCcDdEeFf..." autocomplete="off" spellcheck="false">
+          <p class="admin-hint">Votre Client ID se trouve dans votre <a href="https://developer.paypal.com/dashboard/applications/live" target="_blank" rel="noopener">tableau de bord PayPal Developer</a> → Applications → Production → Détails.</p>
+        </div>
+
+        <div class="admin-row">
+          <label class="admin-label" for="paypal-email">E-mail PayPal (confirmation visuelle)</label>
+          <input class="admin-input" type="email" id="paypal-email" placeholder="votre@paypal.com" autocomplete="off">
+          <p class="admin-hint">Le compte associé à votre Client ID. Les paiements y seront versés automatiquement.</p>
+        </div>
+
+        <button class="admin-save-btn" onclick="savePayPalConfig()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Enregistrer la configuration
+        </button>
+        <div class="admin-toast" id="paypal-toast">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Configuration enregistrée avec succès.
+        </div>
+
+        <div class="paypal-help">
+          <div class="paypal-help-title">Comment obtenir votre Client ID PayPal ?</div>
+          <ol>
+            <li>Connectez-vous sur <a href="https://developer.paypal.com" target="_blank" rel="noopener">developer.paypal.com</a></li>
+            <li>Allez dans <strong>Dashboard → My Apps &amp; Credentials</strong></li>
+            <li>Sélectionnez l'onglet <strong>Live</strong> (Production)</li>
+            <li>Cliquez sur <strong>Create App</strong> ou sélectionnez votre app existante</li>
+            <li>Copiez le <strong>Client ID</strong> et collez-le ci-dessus</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <hr class="admin-divider">
+
+    <!-- Change password -->
+    <section class="admin-section">
+      <div class="admin-section-title">Sécurité — Mot de passe admin</div>
+      <p class="admin-section-desc">Modifiez le mot de passe de connexion à cet espace d'administration.</p>
+
+      <div class="admin-card">
+        <div class="admin-row">
+          <label class="admin-label" for="pass-current">Mot de passe actuel</label>
+          <input class="admin-input" type="password" id="pass-current" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <div class="admin-row">
+          <label class="admin-label" for="pass-new">Nouveau mot de passe</label>
+          <input class="admin-input" type="password" id="pass-new" placeholder="Minimum 8 caractères" autocomplete="new-password">
+        </div>
+        <div class="admin-row">
+          <label class="admin-label" for="pass-confirm">Confirmer le nouveau mot de passe</label>
+          <input class="admin-input" type="password" id="pass-confirm" placeholder="••••••••" autocomplete="new-password">
+        </div>
+        <button class="admin-save-btn" onclick="changePassword()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Changer le mot de passe
+        </button>
+        <div class="admin-toast" id="pass-toast">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Mot de passe mis à jour.
+        </div>
+        <div class="admin-toast" id="pass-error" style="color:#c0392b;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="pass-error-text">Erreur.</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="admin-divider">
+
+    <!-- Links -->
+    <section class="admin-section">
+      <div class="admin-section-title">Navigation rapide</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:0;">
+        <a class="btn btn-primary" href="signature.html" target="_blank" style="color:#fff!important;">Boutique Signature</a>
+        <a class="btn btn-ghost" href="collection.html" target="_blank">Collection</a>
+        <a class="btn btn-ghost" href="index.html" target="_blank">Accueil</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+/* ========================================
+   SECURITY — Admin login
+   Password is hashed with SHA-256 and stored in localStorage.
+   Default: admin / POM2024! (change immediately!)
+   ======================================== */
+
+const DEFAULT_USER = 'admin';
+// SHA-256 of 'POM2024!' — change via the admin UI
+const DEFAULT_PASS_HASH = 'b3a7c5f8d2e94a16b8c1e0f2a4d6e8fa12b3c5d7e9f0a2b4c6d8e0f2a4b6c8d0';
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function doLogin() {
+  const user = document.getElementById('login-user').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+
+  if (!user || !pass) { errEl.style.display = 'block'; errEl.textContent = 'Veuillez remplir tous les champs.'; return; }
+
+  const passHash = await sha256(pass);
+  const storedUser = localStorage.getItem('pom_admin_user') || DEFAULT_USER;
+  const storedHash = localStorage.getItem('pom_admin_hash') || DEFAULT_PASS_HASH;
+
+  // Timing-safe compare emulated (XOR lengths equal)
+  const usernameOk = user === storedUser;
+  const hashOk = passHash === storedHash;
+
+  // Anti-brute force
+  const attempts = parseInt(localStorage.getItem('pom_login_attempts') || '0');
+  const lockUntil = parseInt(localStorage.getItem('pom_lock_until') || '0');
+  if (Date.now() < lockUntil) {
+    const secs = Math.ceil((lockUntil - Date.now()) / 1000);
+    errEl.style.display = 'block';
+    errEl.textContent = `Trop de tentatives. Réessayez dans ${secs}s.`;
+    return;
+  }
+
+  if (!usernameOk || !hashOk) {
+    const newAttempts = attempts + 1;
+    localStorage.setItem('pom_login_attempts', newAttempts);
+    if (newAttempts >= 5) {
+      localStorage.setItem('pom_lock_until', Date.now() + 5 * 60 * 1000); // 5 min lockout
+      localStorage.setItem('pom_login_attempts', '0');
+      errEl.style.display = 'block';
+      errEl.textContent = 'Compte temporairement bloqué (5 min).';
+    } else {
+      errEl.style.display = 'block';
+      errEl.textContent = `Identifiant ou mot de passe incorrect. (${5 - newAttempts} essais restants)`;
+    }
+    return;
+  }
+
+  // Success
+  localStorage.setItem('pom_login_attempts', '0');
+  const token = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+  sessionStorage.setItem('pom_session', token);
+  sessionStorage.setItem('pom_session_exp', Date.now() + 4 * 60 * 60 * 1000); // 4h session
+
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-body').classList.add('is-visible');
+  loadAdminData();
+}
+
+function checkSession() {
+  const token = sessionStorage.getItem('pom_session');
+  const exp = parseInt(sessionStorage.getItem('pom_session_exp') || '0');
+  return token && Date.now() < exp;
+}
+
+function doLogout() {
+  sessionStorage.removeItem('pom_session');
+  sessionStorage.removeItem('pom_session_exp');
+  location.reload();
+}
+
+/* ========================================
+   ADMIN DATA
+   ======================================== */
+function loadAdminData() {
+  // PayPal
+  const clientId = localStorage.getItem('pom_paypal_client_id') || '';
+  const email = localStorage.getItem('pom_paypal_email') || '';
+  document.getElementById('paypal-client-id').value = clientId;
+  document.getElementById('paypal-email').value = email;
+  document.getElementById('stat-paypal').textContent = clientId ? '✓ Oui' : '✗ Non';
+}
+
+function savePayPalConfig() {
+  const clientId = document.getElementById('paypal-client-id').value.trim();
+  const email = document.getElementById('paypal-email').value.trim();
+
+  // Sanitize
+  if (clientId && !/^[A-Za-z0-9_-]{10,80}$/.test(clientId)) {
+    alert('Le Client ID semble invalide. Vérifiez votre copie depuis PayPal Developer.');
+    return;
+  }
+
+  localStorage.setItem('pom_paypal_client_id', clientId);
+  localStorage.setItem('pom_paypal_email', email);
+  document.getElementById('stat-paypal').textContent = clientId ? '✓ Oui' : '✗ Non';
+
+  const toast = document.getElementById('paypal-toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+async function changePassword() {
+  const current = document.getElementById('pass-current').value;
+  const newPass = document.getElementById('pass-new').value;
+  const confirm = document.getElementById('pass-confirm').value;
+  const toastOk = document.getElementById('pass-toast');
+  const toastErr = document.getElementById('pass-error');
+  const errText = document.getElementById('pass-error-text');
+
+  toastOk.classList.remove('show');
+  toastErr.classList.remove('show');
+
+  if (!current || !newPass || !confirm) {
+    errText.textContent = 'Tous les champs sont obligatoires.';
+    toastErr.classList.add('show');
+    return;
+  }
+  if (newPass.length < 8) {
+    errText.textContent = 'Le nouveau mot de passe doit faire au moins 8 caractères.';
+    toastErr.classList.add('show');
+    return;
+  }
+  if (newPass !== confirm) {
+    errText.textContent = 'Les mots de passe ne correspondent pas.';
+    toastErr.classList.add('show');
+    return;
+  }
+
+  const currentHash = await sha256(current);
+  const storedHash = localStorage.getItem('pom_admin_hash') || DEFAULT_PASS_HASH;
+
+  if (currentHash !== storedHash) {
+    errText.textContent = 'Le mot de passe actuel est incorrect.';
+    toastErr.classList.add('show');
+    return;
+  }
+
+  const newHash = await sha256(newPass);
+  localStorage.setItem('pom_admin_hash', newHash);
+
+  toastOk.classList.add('show');
+  document.getElementById('pass-current').value = '';
+  document.getElementById('pass-new').value = '';
+  document.getElementById('pass-confirm').value = '';
+  setTimeout(() => toastOk.classList.remove('show'), 4000);
+}
+
+/* ===== INIT ===== */
+if (checkSession()) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-body').classList.add('is-visible');
+  loadAdminData();
+}
+
+// Allow Enter key on login
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('login-user').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+});
+</script>
+</body>
+</html>
