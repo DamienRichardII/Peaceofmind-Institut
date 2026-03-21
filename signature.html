@@ -12,8 +12,20 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="canonical" href="https://peaceofmindsignature.com/signature.html">
 
-<!-- Configuration partagée du site -->
 <script src="site-config.js"></script>
+<script>
+(function loadPayPalSDK() {
+  const clientId = (window.POM_CONFIG && window.POM_CONFIG.paypalClientId) || 'AR8hQabQrCysdc6ROf-xbT1K2O8vQIE3lXWyiNUrZU4L-L5upL1XVq8FE0iyHj0-6mh711BdKVTZM1OD';
+  const existing = document.getElementById('paypal-script');
+  if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+  const script = document.createElement('script');
+  script.id = 'paypal-script';
+  script.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(clientId) + '&currency=EUR&locale=fr_FR&components=buttons,funding-eligibility&enable-funding=paylater,card';
+  script.setAttribute('data-sdk-integration-source', 'button-factory');
+  script.defer = true;
+  document.head.appendChild(script);
+})();
+</script>
 
 <style>
 /* ===== SIGNATURE PAGE STYLES ===== */
@@ -1170,95 +1182,45 @@ function renderCheckoutSummary() {
 
 /* ========================================
    PAYPAL integration
-   Priorité de lecture :
-   1) window.POM_CONFIG.paypalClientId (partagé pour tous les visiteurs)
-   2) localStorage.pom_paypal_client_id (aperçu local admin)
+   PayPal JS SDK is loaded in <head>
+   The client-id must be set in admin.html
+   and saved in localStorage key: pom_paypal_client_id
    ======================================== */
 let paypalRendered = false;
-let paypalScriptPromise = null;
 
-function getPayPalClientId() {
-  const sharedClientId = window.POM_CONFIG && typeof window.POM_CONFIG.paypalClientId === 'string'
-    ? window.POM_CONFIG.paypalClientId.trim()
-    : '';
-  const localClientId = (localStorage.getItem('pom_paypal_client_id') || '').trim();
-  return sharedClientId || localClientId;
-}
+function initPayPalButtons() {
+  // Check if a custom client_id was saved via admin panel
+  const savedClientId = localStorage.getItem('pom_paypal_client_id');
+  const scriptEl = document.getElementById('paypal-script');
 
-function loadPayPalSdk(clientId) {
-  if (!clientId) {
-    return Promise.reject(new Error('missing-client-id'));
+  if (savedClientId && scriptEl.src.includes('YOUR_CLIENT_ID')) {
+    // Update src with real client ID (works on first load, requires page reload otherwise)
+    scriptEl.src = scriptEl.src.replace('YOUR_CLIENT_ID', savedClientId);
   }
 
-  if (window.paypal) {
-    return Promise.resolve(window.paypal);
-  }
-
-  if (paypalScriptPromise) {
-    return paypalScriptPromise;
-  }
-
-  paypalScriptPromise = new Promise((resolve, reject) => {
-    const existing = document.getElementById('paypal-script');
-    if (existing) existing.remove();
-
-    const script = document.createElement('script');
-    script.id = 'paypal-script';
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(clientId)}&currency=EUR&locale=fr_FR&components=buttons,funding-eligibility&enable-funding=paylater,card`;
-    script.setAttribute('data-sdk-integration-source', 'button-factory');
-    script.async = true;
-    script.onload = () => {
-      if (window.paypal) resolve(window.paypal);
-      else reject(new Error('paypal-sdk-unavailable'));
-    };
-    script.onerror = () => reject(new Error('paypal-sdk-load-failed'));
-    document.head.appendChild(script);
-  });
-
-  return paypalScriptPromise;
-}
-
-function renderPayPalUnavailable(messageHtml) {
-  const container = document.getElementById('paypal-button-container');
-  container.innerHTML = `<p style="color:var(--muted);font-size:13px;text-align:center;padding:12px 0;line-height:1.6;">${messageHtml}</p>`;
-}
-
-async function initPayPalButtons() {
   if (paypalRendered) return;
-
-  const clientId = getPayPalClientId();
-  if (!clientId) {
-    renderPayPalUnavailable("Paiement PayPal non configuré.<br>Ajoutez le Client ID dans <strong>site-config.js</strong> pour l'activer sur tout le site.");
-    return;
-  }
-
-  try {
-    await loadPayPalSdk(clientId);
-  } catch (error) {
-    console.error('PayPal SDK error:', error);
-    renderPayPalUnavailable("Impossible de charger PayPal pour le moment.<br>Vérifiez le Client ID configuré ou réessayez plus tard.");
-    return;
-  }
-
   const container = document.getElementById('paypal-button-container');
-  container.innerHTML = '';
+  container.innerHTML = ''; // clear
+
+  if (typeof paypal === 'undefined') {
+    container.innerHTML = '<p style="color:var(--muted);font-size:13px;text-align:center;padding:12px 0;">Configuration PayPal en attente.<br>Configurez votre compte dans <a href=\'admin.html\' style=\'color:var(--primary)\'>l\'espace admin</a>.</p>';
+    return;
+  }
+
   paypalRendered = true;
 
-  window.paypal.Buttons({
+  paypal.Buttons({
     style: {
       layout: 'vertical',
       color: 'gold',
       shape: 'pill',
       label: 'pay',
     },
-    fundingSource: undefined,
+    fundingSource: undefined, // shows PayPal + card + Apple Pay if eligible
 
     createOrder: function(data, actions) {
       const fields = collectFormFields();
-      if (!fields.valid) {
-        alert('Veuillez remplir tous les champs obligatoires.');
-        return;
-      }
+      if (!fields.valid) { alert('Veuillez remplir tous les champs obligatoires.'); return; }
 
       const items = Object.values(cart).map(i => ({
         name: i.name,
@@ -1283,7 +1245,7 @@ async function initPayPalButtons() {
             address: {
               address_line_1: fields.adresse,
               postal_code: fields.cp,
-              city: fields.ville,
+              admin_area_2: fields.ville,
               country_code: 'FR',
             }
           }
@@ -1299,8 +1261,9 @@ async function initPayPalButtons() {
     },
 
     onError: function(err) {
-      console.error(err);
-      alert('Une erreur PayPal est survenue. Merci de réessayer.');
+      console.error('PayPal error', err);
+      const details = err && typeof err === 'object' ? (err.message || JSON.stringify(err)) : String(err || '');
+      alert('Erreur PayPal : ' + (details || 'Une erreur est survenue lors du paiement.'));
     }
   }).render('#paypal-button-container');
 }
