@@ -464,7 +464,7 @@
     <!-- PayPal configuration -->
     <section class="admin-section">
       <div class="admin-section-title">Paiement PayPal</div>
-      <p class="admin-section-desc">Entrez votre Client ID PayPal pour recevoir les paiements directement sur votre compte. Les clients pourront payer par PayPal, Apple Pay ou carte bancaire.</p>
+      <p class="admin-section-desc">Entrez votre Client ID PayPal pour recevoir les paiements directement sur votre compte. Les clients pourront payer par PayPal, Apple Pay ou carte bancaire. Pour un site 100% statique, pensez aussi à reporter ce Client ID dans le fichier <strong>site-config.js</strong> afin qu’il soit visible par tous les visiteurs.</p>
 
       <div class="admin-card">
         <div class="admin-row">
@@ -477,6 +477,7 @@
           <label class="admin-label" for="paypal-email">E-mail PayPal (confirmation visuelle)</label>
           <input class="admin-input" type="email" id="paypal-email" placeholder="votre@paypal.com" autocomplete="off">
           <p class="admin-hint">Le compte associé à votre Client ID. Les paiements y seront versés automatiquement.</p>
+          <p class="admin-hint"><strong>Important :</strong> l’enregistrement dans cet espace admin reste local à ce navigateur. Pour rendre PayPal disponible à tous les visiteurs du site, copiez aussi le Client ID dans le fichier <strong>site-config.js</strong>.</p>
         </div>
 
         <button class="admin-save-btn" onclick="savePayPalConfig()">
