@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infusions — Peace of Mind®</title>
+  <meta name="description" content="Les Infusions Signature de Peace of Mind® — rituels à infuser, à vivre, à offrir." />
+  <link rel="icon" href="assets/logo-peace-of-mind-cropped.png" type="image/png" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div class="toast" id="toast"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html"><img src="assets/logo-peace-of-mind-cropped.png" alt="Peace of Mind®" /></a>
+    <nav class="site-nav" id="siteNav">
+      <a href="maison.html">La Maison</a>
+      <a href="infusions.html" class="is-active">Infusions</a>
+      <a href="reserver.html">Réserver</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-btn" href="panier.html"><span class="cart-text">Panier</span><span class="cart-count" id="cartCount">0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero section fade-up" style="text-align:center">
+      <p class="section-label">Chapitre III — Infusions</p>
+      <h1>Les infusions<br /><em class="serif-italic">Signature.</em></h1>
+      <p style="max-width:480px;margin:12px auto 0">Chaque infusion est un chapitre prolongé du soin.</p>
+      <div class="cta-row" style="justify-content:center;margin-top:28px">
+        <a class="btn btn-primary" href="#collection">Boutique</a>
+        <a class="btn btn-secondary" href="maison.html">La philosophie</a>
+      </div>
+    </section>
+
+    <!-- L'HISTOIRE -->
+    <section class="section fade-up">
+      <div class="grid-2" style="gap:clamp(40px,6vw,80px)">
+        <div>
+          <p class="section-label">L'histoire</p>
+          <h2>Chaque infusion naît<br /><em class="serif-italic">d'un geste.</em></h2>
+          <p class="mt-sm">Peace of Mind® a formulé ses infusions comme le prolongement naturel du protocole capillaire. Ce qui se passe dans la fibre, l'infusion le continue dans le corps entier. Un soin commence souvent avant d'entrer dans la pièce.</p>
+        </div>
+        <div class="method-grid" style="grid-template-columns:1fr;gap:1px;background:var(--nude)">
+          <div class="method-card" style="background:var(--cream)">
+            <span class="number">I.</span>
+            <h3>Matière</h3>
+            <p>Des plantes sélectionnées pour leur précision, leur douceur, leur action réelle.</p>
+          </div>
+          <div class="method-card" style="background:var(--cream)">
+            <span class="number">II.</span>
+            <h3>Geste</h3>
+            <p>L'infusion se prépare avec attention. Température, durée, silence. Un rituel à part entière.</p>
+          </div>
+          <div class="method-card" style="background:var(--cream)">
+            <span class="number">III.</span>
+            <h3>Résultat</h3>
+            <p>Apaisement, ancrage, clarté. Ce que le corps ressent quand il est bien traité.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALEURS -->
+    <section style="background:var(--ivory);padding:clamp(40px,6vw,72px) var(--gutter)">
+      <div class="container">
+        <p class="section-label text-center fade-up">Ce qui nous guide</p>
+        <div class="values-grid" style="margin-top:clamp(28px,4vw,48px)">
+          <div class="value-item fade-up"><span class="v-icon">◦</span><h4>Apaiser</h4><p>Ralentir, détendre, laisser le corps retrouver son rythme naturel.</p></div>
+          <div class="value-item fade-up"><span class="v-icon">◦</span><h4>Former</h4><p>Composer avec le rituel. Installer une habitude sensible et durable.</p></div>
+          <div class="value-item fade-up"><span class="v-icon">◦</span><h4>Ressourcer</h4><p>Puiser dans les plantes ce que le soin a commencé à libérer.</p></div>
+          <div class="value-item fade-up"><span class="v-icon">◦</span><h4>Prolonger</h4><p>Chaque gorgée prolonge le protocole. L'infusion est la suite du soin.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section class="section" id="collection">
+      <div class="section-head fade-up">
+        <p class="section-label">La collection</p>
+        <h2>Apaiser. Former.<br /><em class="serif-italic">Ressourcer.</em></h2>
+      </div>
+      <div class="infusions-grid">
+        <div class="infusion-card fade-up">
+          <div class="infusion-card__img">
+            <img src="assets/coffret-origins.jpg" alt="Infusion Origins" loading="lazy" />
+          </div>
+          <div class="infusion-card__body">
+            <span class="badge">I. Matière</span>
+            <h3>Origins</h3>
+            <p>Retour aux racines. Plantes ancestrales, ancrage profond, clarté intérieure.</p>
+            <div class="infusion-card__footer">
+              <span class="price">34 €</span>
+              <button class="add-to-cart" data-id="origins" data-name="Infusion Origins" data-price="34">Ajouter au panier</button>
+            </div>
+            <a href="produit.html?id=origins" class="btn-ghost" style="display:block;margin-top:12px;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)">Voir la fiche →</a>
+          </div>
+        </div>
+        <div class="infusion-card fade-up">
+          <div class="infusion-card__img">
+            <img src="assets/coffret-myself.jpg" alt="Infusion Geste" loading="lazy" />
+          </div>
+          <div class="infusion-card__body">
+            <span class="badge">II. Geste</span>
+            <h3>Geste</h3>
+            <p>Légèreté et fluidité. Pour les jours où le corps demande à être allégé.</p>
+            <div class="infusion-card__footer">
+              <span class="price">34 €</span>
+              <button class="add-to-cart" data-id="geste" data-name="Infusion Geste" data-price="34">Ajouter au panier</button>
+            </div>
+            <a href="produit.html?id=geste" class="btn-ghost" style="display:block;margin-top:12px;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)">Voir la fiche →</a>
+          </div>
+        </div>
+        <div class="infusion-card fade-up">
+          <div class="infusion-card__img">
+            <img src="assets/coffret-relive.jpg" alt="Infusion Résultat" loading="lazy" />
+          </div>
+          <div class="infusion-card__body">
+            <span class="badge">III. Résultat</span>
+            <h3>Résultat</h3>
+            <p>L'infusion de l'après. Pour ancrer la transformation et prolonger l'effet du soin.</p>
+            <div class="infusion-card__footer">
+              <span class="price">34 €</span>
+              <button class="add-to-cart" data-id="resultat" data-name="Infusion Résultat" data-price="34">Ajouter au panier</button>
+            </div>
+            <a href="produit.html?id=resultat" class="btn-ghost" style="display:block;margin-top:12px;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)">Voir la fiche →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL FINALE -->
+    <div class="cta-panel fade-up">
+      <div>
+        <p class="section-label" style="color:var(--accent-warm)">Chaque infusion est un chapitre prolongé du soin.</p>
+        <h2>Apaiser. Former.<br /><em class="serif-italic">Ressourcer.</em></h2>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="panier.html">Mon panier</a>
+        <a class="btn btn-secondary" href="reserver.html">Réserver un protocole</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/logo-peace-of-mind-cropped.png" alt="Peace of Mind®" />
+      <p>Soin · Matière · Signature</p>
+    </div>
+    <div class="footer-nav">
+      <h5>Collection</h5>
+      <a href="produit.html?id=origins">Origins</a>
+      <a href="produit.html?id=geste">Geste</a>
+      <a href="produit.html?id=resultat">Résultat</a>
+      <a href="panier.html">Panier</a>
+    </div>
+    <div class="footer-nav">
+      <h5>Maison</h5>
+      <a href="maison.html">La Maison</a>
+      <a href="reserver.html">Réserver</a>
+      <a href="contact.html">Contact</a>
+      <a href="mentions.html">Mentions légales</a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Peace of Mind® — Tous droits réservés</p>
+      <p>Paris, France</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panier — Peace of Mind®</title>
+  <link rel="icon" href="assets/logo-peace-of-mind-cropped.png" type="image/png" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div class="toast" id="toast"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html"><img src="assets/logo-peace-of-mind-cropped.png" alt="Peace of Mind®" /></a>
+    <nav class="site-nav" id="siteNav">
+      <a href="maison.html">La Maison</a>
+      <a href="infusions.html">Infusions</a>
+      <a href="reserver.html">Réserver</a>
+      <a href="journal.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-btn" href="panier.html"><span class="cart-text">Panier</span><span class="cart-count" id="cartCount">0</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero section fade-up">
+      <p class="section-label">Mon panier</p>
+      <h1>Votre sélection.</h1>
+    </section>
+
+    <section class="section" id="cartSection">
+      <div class="cart-layout" id="cartLayout">
+        <div id="cartItems">
+          <!-- Populated by JS -->
+        </div>
+        <aside class="cart-summary-box" id="cartSummary" style="display:none">
+          <h3>Récapitulatif</h3>
+          <div class="cart-summary-line"><span>Sous-total</span><span id="cartSubtotal">0 €</span></div>
+          <div class="cart-summary-line"><span>Livraison</span><span>Offerte dès 60 €</span></div>
+          <div class="cart-summary-line total"><span>Total</span><span id="cartTotal">0 €</span></div>
+          <a class="btn btn-primary" href="checkout.html" style="width:100%;justify-content:center;margin-top:20px">Passer la commande</a>
+          <a class="btn btn-secondary" href="infusions.html" style="width:100%;justify-content:center;margin-top:12px">Continuer mes achats</a>
+          <div class="payment-logos">
+            <span class="payment-logo-badge">CB</span>
+            <span class="payment-logo-badge">Visa</span>
+            <span class="payment-logo-badge">Mastercard</span>
+            <span class="payment-logo-badge">Stripe</span>
+          </div>
+        </aside>
+      </div>
+      <div class="cart-empty" id="cartEmpty" style="display:none">
+        <h2>Votre panier est vide.</h2>
+        <p>Découvrez les infusions Signature de Peace of Mind®.</p>
+        <a class="btn btn-primary" href="infusions.html" style="margin-top:24px">Voir la collection</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand"><img src="assets/logo-peace-of-mind-cropped.png" alt="Peace of Mind®" /><p>Soin · Matière · Signature</p></div>
+    <div class="footer-nav"><h5>Collection</h5><a href="infusions.html">Infusions</a><a href="checkout.html">Commander</a></div>
+    <div class="footer-nav"><h5>Maison</h5><a href="maison.html">La Maison</a><a href="mentions.html">Mentions légales</a></div>
+    <div class="footer-bottom"><p>© 2026 Peace of Mind® — Tous droits réservés</p></div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script>
+    function renderCart() {
+      const items = window.POM?.cart?.items || [];
+      const cartItems = document.getElementById('cartItems');
+      const cartEmpty = document.getElementById('cartEmpty');
+      const cartSummary = document.getElementById('cartSummary');
+      const imgMap = { origins:'assets/coffret-origins.jpg', geste:'assets/essentiel.jpg', resultat:'assets/coffret-relive.jpg', 'coffret-myself':'assets/coffret-myself.jpg' };
+      if (!items.length) {
+        cartItems.innerHTML = '';
+        cartEmpty.style.display = 'block';
+        cartSummary.style.display = 'none';
+        return;
+      }
+      cartEmpty.style.display = 'none';
+      cartSummary.style.display = 'block';
+      cartItems.innerHTML = items.map(item => `
+        <div class="cart-item" data-id="${item.id}">
+          <img class="cart-item__img" src="${imgMap[item.id] || 'assets/coffret-origins.jpg'}" alt="${item.name}" />
+          <div>
+            <div class="cart-item__name">${item.name}</div>
+            <div class="cart-item__meta">${item.price} € / unité</div>
+            <div class="qty-selector" style="margin-top:10px;border-color:var(--nude)">
+              <button onclick="updateQty('${item.id}', -1)">−</button>
+              <input type="number" value="${item.qty}" min="1" max="10" readonly style="width:44px;height:40px" />
+              <button onclick="updateQty('${item.id}', 1)">+</button>
+            </div>
+            <button class="cart-item__remove" onclick="removeItem('${item.id}')">Retirer</button>
+          </div>
+          <div style="font-family:var(--serif);font-size:1.1rem">${item.price * item.qty} €</div>
+        </div>
+      `).join('');
+      const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+      document.getElementById('cartSubtotal').textContent = total + ' €';
+      document.getElementById('cartTotal').textContent = total + ' €';
+    }
+    function updateQty(id, d) {
+      window.POM?.cart?.updateQty(id, d);
+      renderCart();
+    }
+    function removeItem(id) {
+      window.POM?.cart?.remove(id);
+      renderCart();
+    }
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+</body>
+</html>
