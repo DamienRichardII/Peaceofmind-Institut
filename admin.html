@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Peace of Mind — Administration</title>
+<meta name="description" content="Tableau de bord administrateur — Peace of Mind Institut.">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#4B2E23" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+
+<!-- ═══ PROTECTION FRONT TEMPORAIRE ═══ -->
+<div id="adminGate" style="position:fixed;inset:0;z-index:99999;background:#f7f4f1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;font-family:'Montserrat',sans-serif;">
+  <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" style="max-width:200px;height:auto;opacity:.7" />
+  <p style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6B635E;margin:0">Accès réservé</p>
+  <input id="adminPwd" type="password" placeholder="Mot de passe" autocomplete="current-password"
+    style="padding:12px 18px;border:1px solid #E7DED7;background:#fff;font-family:inherit;font-size:13px;letter-spacing:.05em;color:#111;outline:none;width:240px;text-align:center" />
+  <button onclick="(function(){var v=document.getElementById('adminPwd').value;if(btoa(v)==='cG9tMjAyNmFkbWlu'){document.getElementById('adminGate').style.display='none';}else{document.getElementById('adminErr').style.display='block';}})()"
+    style="padding:11px 28px;background:#4B2E23;color:#fff;border:none;font-family:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">
+    Accéder
+  </button>
+  <p id="adminErr" style="display:none;font-size:11px;color:#c0392b;letter-spacing:.08em">Mot de passe incorrect.</p>
+  <p style="font-size:10px;color:#aaa;letter-spacing:.06em;margin-top:8px">Protection front temporaire — à remplacer par une auth backend.</p>
+</div>
+<script>
+  document.getElementById('adminPwd').addEventListener('keydown', function(e){
+    if(e.key==='Enter') document.querySelector('#adminGate button').click();
+  });
+</script>
+
+<header class="site-header site-header--center">
+  <div class="container header-centered">
+    <a class="brand brand--center" href="index.html" aria-label="Accueil">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="brand-logo brand-logo--center" />
+    </a>
+
+    <nav class="nav nav--center" aria-label="Navigation principale">
+      <a href="expertise.html">Expertise</a>
+      <a href="menu.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary nav-cta" href="menu.html#reservation">Prendre RDV</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Administration</h1>
+      <p class="lead muted">Accès réservé — gestion des disponibilités et des réservations.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Paramètres planning -->
+      <div class="card">
+        <div class="card-h">Paramètres du planning</div>
+
+        <div class="grid-2">
+          <label class="field">
+            <span>Intervalle entre créneaux (min)</span>
+            <input type="number" id="intervalMin" min="5" max="120" value="15" />
+          </label>
+        </div>
+
+        <div class="spacer-sm"></div>
+
+        <h3 class="subhead">Jours & horaires</h3>
+        <div id="adminDays" class="admin-days"></div>
+
+        <div class="spacer-sm"></div>
+
+        <h3 class="subhead">Dates fermées</h3>
+        <div class="admin-row">
+          <input type="date" id="exceptionDate"  />
+      

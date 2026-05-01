@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<title>Institut mixte soins - beauté - infusions shop | Peace of Mind</title>
-<meta name="description" content="Peace of Mind Institut — soins, beauté & infusions. Réservation en ligne.">
+<title>Qui nous sommes — Peace of Mind</title>
+<meta name="description" content="Institut premium — soins, onglerie, pigmentation & accompagnement ciblé.">
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -11,18 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
+
 </head>
+<body>
 
-<body class="has-book-intro">
-
-<!-- Animation d’ouverture -->
-<div class="book-intro" id="bookIntro" aria-hidden="true">
-  <div class="book-intro__logo">
-    <img src="assets/logo-peace-of-mind-final.png" alt="" />
-  </div>
-  <div class="book-intro__panel book-intro__panel--left"></div>
-  <div class="book-intro__panel book-intro__panel--right"></div>
-</div>
 
 <header class="site-header site-header--center">
   <div class="container header-centered">
@@ -40,21 +32,40 @@
   </div>
 </header>
 
-<main>
-  <section class="hero--editorial">
-    <div class="hero-editorial-lockup">
-      <p class="hero-eyebrow">Institut · Gradignan, Bordeaux</p>
-      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="hero-editorial-logo" />
-      <span class="hero-rule" aria-hidden="true"></span>
-      <p class="hero-tagline">Soin · Beauté · Infusions</p>
-      <div class="hero-editorial-cta">
-        <a class="btn btn-primary" href="menu.html#reservation">Prendre RDV</a>
-        <a class="btn btn-ghost" href="collection.html">Collection</a>
-      </div>
+
+<main class="page">
+  <section class="page-hero">
+    <p class="kicker">Peace of Mind</p>
+    <h1>Qui nous sommes</h1>
+    <p class="page-lead"><strong>Institut mixte soin et beauté.</strong><br><strong>Maîtrise et collection en ligne.</strong></p>
+  </section>
+
+  <section class="grid-2">
+    <article class="card">
+      <h3>L’art du sur‑mesure</h3>
+      <p class="muted">Des soins précis, une approche exigeante, une expérience premium pensée pour le confort et la confiance.</p>
+    </article>
+    <article class="card">
+      <h3>Un univers bien‑être</h3>
+      <p class="muted">Minimalisme chaleureux, matières nobles et rituels orientés santé & bien‑être — sur place et en ligne.</p>
+    </article>
+  </section>
+
+  <section class="gallery">
+    <h2>Une signature</h2>
+    <div class="gallery-grid">
+      <img src="./assets/photo-1.jpg" alt="Peace of Mind — détail" loading="lazy">
+      <img src="./assets/photo-2.jpg" alt="Peace of Mind — manucure" loading="lazy">
+      <img src="./assets/photo-3.jpg" alt="Peace of Mind — soin" loading="lazy">
+      <img src="./assets/photo-4.jpg" alt="Peace of Mind — manucure" loading="lazy">
     </div>
-    <div class="hero-scroll-hint" aria-hidden="true">Descendre</div>
+  </section>
+
+  <section class="note">
+    <p class="muted">Réservation directe sur le site</p>
   </section>
 </main>
+
 
 <footer class="site-footer site-footer--dark">
   <div class="container footer-inner">
@@ -80,26 +91,6 @@
     <span>Gradignan, Bordeaux</span>
   </div>
 </footer>
-
-<script>
-  (function () {
-    function finishIntro() {
-      document.body.classList.add('intro-done');
-    }
-
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      finishIntro();
-      return;
-    }
-
-    window.addEventListener('load', function () {
-      setTimeout(finishIntro, 2200);
-    });
-
-    // Fallback de sécurité : l’intro ne doit jamais bloquer la page.
-    setTimeout(finishIntro, 3000);
-  })();
-</script>
 
 </body>
 </html>

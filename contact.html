@@ -1,162 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Peace of Mind®</title>
-  <meta name="description" content="Contactez Peace of Mind® — questions, disponibilités, situations particulières." />
-  <link rel="icon" href="assets/logo-peace-of-mind-cropped.png" type="image/png" />
-  <link rel="stylesheet" href="assets/styles.css" />
+<title>Peace of Mind Institut — Contact</title>
+<meta name="description" content="Institut premium — soins, onglerie, pigmentation & accompagnement ciblé.">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#4B2E23" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+
 </head>
 <body>
 
-  <div class="toast" id="toast"></div>
 
-  <header class="site-header" id="siteHeader">
-    <a class="brand" href="index.html"><img src="assets/logo-peace-of-mind-cropped.png" alt="Peace of Mind®" /></a>
-    <nav class="site-nav" id="siteNav">
-      <a href="maison.html">La Maison</a>
-      <a href="infusions.html">Infusions</a>
-      <a href="reserver.html">Réserver</a>
-      <a href="journal.html">Journal</a>
-      <a href="contact.html" class="is-active">Contact</a>
+<header class="site-header site-header--center">
+  <div class="container header-centered">
+    <a class="brand brand--center" href="index.html" aria-label="Accueil">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="brand-logo brand-logo--center" />
+    </a>
+
+    <nav class="nav nav--center" aria-label="Navigation principale">
+      <a href="expertise.html">Expertise</a>
+      <a href="menu.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary nav-cta" href="menu.html#reservation">Prendre RDV</a>
     </nav>
-    <div class="header-actions">
-      <a class="cart-btn" href="panier.html"><span class="cart-text">Panier</span><span class="cart-count" id="cartCount">0</span></a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero--editorial">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <h1>Parlons<br><em class="serif-italic">de vous.</em></h1>
     </div>
-  </header>
+  </section>
 
-  <main>
-
-    <section class="page-hero section fade-up">
-      <p class="section-label">Chapitre D — Contact</p>
-      <h1>Parlons<br /><em class="serif-italic">de vous.</em></h1>
-    </section>
-
-    <!-- CONTACT GRID -->
-    <section class="section contact-grid fade-up">
-      <div class="contact-visual">
-        <img src="assets/photo-3.jpg" alt="Contact Peace of Mind" loading="lazy" />
+  <section class="contact-grid container">
+    <div class="contact-visual">
+      <img src="assets/photo-3.jpg" alt="Peace of Mind Institut" loading="lazy">
+    </div>
+    <div>
+      <p class="section-label">Informations pratiques</p>
+      <ul class="contact-list">
+        <li><strong>Adresse</strong><span>41 Cours du Général de Gaulle, Gradignan</span></li>
+        <li><strong>Horaires</strong><span>Mar–Ven 9h–19h · Sam 9h–17h · Dim–Lun fermé</span></li>
+        <li><strong>Transports</strong><span>Arrêts Cimetière, Les 3 Tours ou Mésanges</span></li>
+        <li><strong>Parking</strong><span>Stationnement libre et gratuit</span></li>
+        <li><strong>Réponse</strong><span>Sous 24h ouvrées</span></li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="menu.html#reservation">Réserver directement</a>
       </div>
-      <div>
-        <p class="section-label">Informations pratiques</p>
-        <h3 style="margin-bottom:20px">Retrouvez-nous.</h3>
-        <ul class="contact-list">
-          <li><strong>Email</strong><a href="mailto:contact@peace-of-mind-signature.fr">contact@peace-of-mind-signature.fr</a></li>
-          <li><strong>Adresse</strong>Paris — communiquée à la confirmation</li>
-          <li><strong>Horaires</strong><span>Mar–Ven 9h–19h · Sam 9h–17h · Dim–Lun fermé</span></li>
-          <li><strong>Réponse</strong>Sous 24h ouvrées</li>
-        </ul>
-        <div class="cta-row mt-md">
-          <a class="btn btn-primary" href="reserver.html">Réserver directement</a>
-          <a class="btn btn-secondary" href="mentions.html">RGPD &amp; confidentialité</a>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FORMULAIRE -->
-    <section class="section frame" style="background:var(--ivory);max-width:100%;margin:0">
-      <div class="container">
-        <div class="section-head fade-up">
-          <p class="section-label">Formulaire de contact</p>
-          <h2>Écrivez-nous.</h2>
-        </div>
-        <form id="contactForm" novalidate style="margin-top:28px">
-          <div class="contact-form-grid">
-            <div class="form-step">
-              <label for="cFirstname">Prénom</label>
-              <input id="cFirstname" name="firstname" type="text" autocomplete="given-name" required placeholder="Votre prénom" />
-            </div>
-            <div class="form-step">
-              <label for="cLastname">Nom</label>
-              <input id="cLastname" name="lastname" type="text" autocomplete="family-name" required placeholder="Votre nom" />
-            </div>
-            <div class="form-step">
-              <label for="cEmail">Email</label>
-              <input id="cEmail" name="email" type="email" autocomplete="email" required placeholder="votre@email.fr" />
-            </div>
-            <div class="form-step">
-              <label for="cSubject">Objet</label>
-              <select id="cSubject" name="subject" required>
-                <option value="">Sélectionner un objet</option>
-                <option>Question sur un protocole</option>
-                <option>Question sur les infusions</option>
-                <option>Contre-indication ou situation médicale</option>
-                <option>Disponibilités et créneaux</option>
-                <option>Commande / livraison</option>
-                <option>Autre</option>
-              </select>
-            </div>
-            <div class="form-step full">
-              <label for="cMessage">Message</label>
-              <textarea id="cMessage" name="message" rows="5" required placeholder="Votre message…"></textarea>
-            </div>
-            <div class="form-step full" style="display:flex;align-items:flex-start;gap:14px">
-              <input type="checkbox" id="cConsent" name="consent" required style="width:17px;height:17px;min-width:17px;margin-top:3px;padding:0;accent-color:var(--accent)" />
-              <label for="cConsent" style="font-size:.82rem;color:var(--muted);line-height:1.65;cursor:pointer;text-transform:none;letter-spacing:0">
-                J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la <a href="mentions.html" style="color:var(--accent)">politique de confidentialité</a>.
-              </label>
-            </div>
+  <section class="contact-form-section">
+    <div class="container">
+      <p class="section-label">Formulaire de contact</p>
+      <h2>Écrivez-nous.</h2>
+      <form id="contactForm" novalidate>
+        <div class="contact-form-grid">
+          <div class="form-step">
+            <label for="cFirstname">Prénom</label>
+            <input id="cFirstname" name="firstname" type="text" autocomplete="given-name" required placeholder="Votre prénom">
           </div>
-          <button type="submit" class="btn btn-primary" style="margin-top:24px">Envoyer le message</button>
-          <p id="contactResult" class="form-result" style="margin-top:12px" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
+          <div class="form-step">
+            <label for="cLastname">Nom</label>
+            <input id="cLastname" name="lastname" type="text" autocomplete="family-name" required placeholder="Votre nom">
+          </div>
+          <div class="form-step">
+            <label for="cEmail">Email</label>
+            <input id="cEmail" name="email" type="email" autocomplete="email" required placeholder="votre@email.fr">
+          </div>
+          <div class="form-step">
+            <label for="cSubject">Objet</label>
+            <select id="cSubject" name="subject" required>
+              <option value="">Sélectionner un objet</option>
+              <option>Question sur un protocole</option>
+              <option>Contre-indication ou situation médicale</option>
+              <option>Disponibilités et créneaux</option>
+              <option>Infusions et produits</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-step full">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" name="message" rows="5" required placeholder="Votre message…"></textarea>
+          </div>
+          <div class="form-step full form-consent">
+            <input type="checkbox" id="cConsent" name="consent" required>
+            <label for="cConsent">J’accepte que mes informations soient utilisées pour traiter ma demande. Aucune transmission à des tiers.</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:24px">Envoyer le message</button>
+        <p id="contactResult" class="form-result" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 
-    <!-- RÉASSURANCE -->
-    <div class="info-strip fade-up">
+  <section class="container">
+    <div class="info-strip">
       <div class="info-card">
-        <p class="section-label">Discrétion</p>
+        <span class="section-label">Discrétion</span>
         <h3>Votre message reste confidentiel.</h3>
-        <p>Données traitées selon le cadre RGPD — aucune transmission à des tiers.</p>
+        <p>Données traitées en interne — aucune transmission à des tiers.</p>
       </div>
       <div class="info-card">
-        <p class="section-label">Réactivité</p>
+        <span class="section-label">Réactivité</span>
         <h3>Une réponse humaine et rapide.</h3>
         <p>Sous 24h ouvrées — une vraie lecture, pas un accusé automatique.</p>
       </div>
       <div class="info-card">
-        <p class="section-label">Sans engagement</p>
-        <h3>Poser une question n'engage à rien.</h3>
-        <p>Poser une question n'engage à rien. L'objectif est de vous aider à choisir juste.</p>
+        <span class="section-label">Sans engagement</span>
+        <h3>Poser une question n’engage à rien.</h3>
+        <p>L’objectif est de vous aider à choisir juste, selon votre situation.</p>
       </div>
     </div>
+  </section>
 
-  </main>
+</main>
 
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <img src="assets/logo-peace-of-mind-cropped.png" alt="Peace of Mind®" />
-      <p>Soin · Matière · Signature</p>
+<footer class="site-footer site-footer--dark">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="footer-brand-img" />
+      <span class="footer-baseline">Soin · Beauté · Infusions</span>
     </div>
-    <div class="footer-nav">
-      <h5>Navigation</h5>
-      <a href="maison.html">La Maison</a>
-      <a href="infusions.html">Infusions</a>
-      <a href="reserver.html">Réserver</a>
+    <div class="footer-col">
+      <div class="footer-title">Navigation</div>
+      <a href="expertise.html">Expertise</a>
+      <a href="menu.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="contact.html">Contact</a>
+      <a href="menu.html#reservation">Prendre RDV</a>
     </div>
-    <div class="footer-nav">
-      <h5>Infos</h5>
-      <a href="mentions.html">Mentions légales</a>
-      <a href="panier.html">Panier</a>
+    <div class="footer-col">
+      <div class="footer-title">Infos</div>
+      <a href="contact.html">Nous contacter</a>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Peace of Mind® — Tous droits réservés</p>
-      <p>Paris, France</p>
-    </div>
-  </footer>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Peace of Mind Institut — Tous droits réservés.</span>
+    <span>Gradignan, Bordeaux</span>
+  </div>
+</footer>
 
-  <script src="assets/app.js"></script>
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const r = document.getElementById('contactResult');
-      r.textContent = 'Message envoyé. Réponse sous 24h ouvrées.';
-      r.style.color = 'var(--accent)';
-      this.reset();
-    });
-  </script>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = new FormData(this);
+    var subject = encodeURIComponent('Message — Peace of Mind Institut');
+    var body = encodeURIComponent(
+      'Prénom : ' + (data.get('firstname')||'') +
+      '\nNom : ' + (data.get('lastname')||'') +
+      '\nEmail : ' + (data.get('email')||'') +
+      '\nObjet : ' + (data.get('subject')||'') +
+      '\n\n' + (data.get('message')||'')
+    );
+    window.location.href = 'mailto:contact@peaceofmind-gradignan.fr?subject=' + subject + '&body=' + body;
+    document.getElementById('contactResult').textContent = 'Votre client email s’ouvre pour finaliser l’envoi.';
+    this.reset();
+  });
+</script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<title>Institut mixte soins - beauté - infusions shop | Peace of Mind</title>
-<meta name="description" content="Peace of Mind Institut — soins, beauté & infusions. Réservation en ligne.">
+<title>Peace of Mind Institut — Collection</title>
+<meta name="description" content="Institut premium — soins, onglerie, pigmentation & accompagnement ciblé.">
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -11,18 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
+
 </head>
+<body>
 
-<body class="has-book-intro">
-
-<!-- Animation d’ouverture -->
-<div class="book-intro" id="bookIntro" aria-hidden="true">
-  <div class="book-intro__logo">
-    <img src="assets/logo-peace-of-mind-final.png" alt="" />
-  </div>
-  <div class="book-intro__panel book-intro__panel--left"></div>
-  <div class="book-intro__panel book-intro__panel--right"></div>
-</div>
 
 <header class="site-header site-header--center">
   <div class="container header-centered">
@@ -40,21 +32,46 @@
   </div>
 </header>
 
-<main>
-  <section class="hero--editorial">
-    <div class="hero-editorial-lockup">
-      <p class="hero-eyebrow">Institut · Gradignan, Bordeaux</p>
-      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="hero-editorial-logo" />
-      <span class="hero-rule" aria-hidden="true"></span>
-      <p class="hero-tagline">Soin · Beauté · Infusions</p>
-      <div class="hero-editorial-cta">
-        <a class="btn btn-primary" href="menu.html#reservation">Prendre RDV</a>
-        <a class="btn btn-ghost" href="collection.html">Collection</a>
-      </div>
+
+<main class="page">
+  <section class="page-hero">
+    <p class="kicker">Signature • Collection • Maîtrise</p>
+    <h1>L’héritage Peace of Mind</h1>
+    <p class="page-lead">Santé, réconfort et excellence — une boutique pensée comme une extension du soin.</p>
+  </section>
+
+  <section class="grid-3">
+    <article class="card">
+      <h2>Signature</h2>
+      <p class="muted">Infusions de fleurs véritables. Un coffret, un remède.</p>
+      <p class="muted">Une sélection délicate alliant santé et réconfort.</p>
+      <a class="link" href="menu.html#reservation">Réserver →</a>
+    </article>
+
+    <article class="card">
+      <h2>Collection</h2>
+      <p class="muted">L’essentiel au quotidien</p>
+      <p class="badge">Disponible en ligne prochainement</p>
+    </article>
+
+    <article class="card">
+      <h2>Maîtrise</h2>
+      <p class="muted">Savoir rare. Maîtrise absolue.</p>
+      <p class="badge">Formation en ligne disponible prochainement</p>
+    </article>
+  </section>
+
+  <section class="gallery">
+    <h3>Moments & matières</h3>
+    <div class="gallery-grid">
+      <img src="./assets/photo-1.jpg" alt="Peace of Mind — détail soin" loading="lazy">
+      <img src="./assets/photo-2.jpg" alt="Peace of Mind — manucure" loading="lazy">
+      <img src="./assets/photo-3.jpg" alt="Peace of Mind — détail" loading="lazy">
+      <img src="./assets/photo-4.jpg" alt="Peace of Mind — manucure" loading="lazy">
     </div>
-    <div class="hero-scroll-hint" aria-hidden="true">Descendre</div>
   </section>
 </main>
+
 
 <footer class="site-footer site-footer--dark">
   <div class="container footer-inner">
@@ -80,26 +97,6 @@
     <span>Gradignan, Bordeaux</span>
   </div>
 </footer>
-
-<script>
-  (function () {
-    function finishIntro() {
-      document.body.classList.add('intro-done');
-    }
-
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      finishIntro();
-      return;
-    }
-
-    window.addEventListener('load', function () {
-      setTimeout(finishIntro, 2200);
-    });
-
-    // Fallback de sécurité : l’intro ne doit jamais bloquer la page.
-    setTimeout(finishIntro, 3000);
-  })();
-</script>
 
 </body>
 </html>

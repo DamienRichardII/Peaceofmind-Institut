@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<title>Peace of Mind Institut — Menu</title>
+<meta name="description" content="Institut premium — soins, onglerie, pigmentation & accompagnement ciblé.">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#4B2E23" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+
+
+<header class="site-header site-header--center">
+  <div class="container header-centered">
+    <a class="brand brand--center" href="index.html" aria-label="Accueil">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="brand-logo brand-logo--center" />
+    </a>
+
+    <nav class="nav nav--center" aria-label="Navigation principale">
+      <a href="expertise.html">Expertise</a>
+      <a href="menu.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary nav-cta" href="menu.html#reservation">Prendre RDV</a>
+    </nav>
+  </div>
+</header>
+
+
+<main class="page page--booking">
+  <section class="page-hero page-hero--booking">
+    <div class="container">
+      <p class="kicker">Menu</p>
+      <h1>Réservation directe</h1>
+      <p class="page-lead">Choisissez une prestation, une date, un créneau — puis validez en ligne.</p>
+    </div>
+  </section>
+
+  <section id="reservation" class="booking">
+    <div class="container booking-layout">
+      <aside class="booking-left" aria-label="Choix de la prestation">
+        <div class="panel">
+          <div class="panel__head">
+            <h2 class="panel__title">Prestations</h2>
+            <p class="panel__sub">Sélectionnez votre rituel.</p>
+          </div>
+
+          <div class="filters" role="tablist" aria-label="Catégories">
+            <button class="chip chip--active" type="button" data-filter="all" role="tab" aria-selected="true">Tout</button>
+            <button class="chip" type="button" data-filter="SOINS" role="tab">Soins</button>
+            <button class="chip" type="button" data-filter="ONGLES" role="tab">Ongles</button>
+            <button class="chip" type="button" data-filter="PIGMENTATION" role="tab">Pigmentation</button>
+            <button class="chip" type="button" data-filter="INFUSIONS" role="tab">Infusions</button>
+            <button class="chip" type="button" data-filter="ESSENTIEL" role="tab">Essentiel</button>
+          </div>
+
+          <div id="servicesList" class="services" aria-live="polite"></div>
+        </div>
+      </aside>
+
+      <div class="booking-right" aria-label="Sélection de la date et de l'horaire">
+        <div class="panel">
+          <div class="panel__head">
+            <h2 class="panel__title">Date & créneau</h2>
+            <p class="panel__sub">Disponibilités mises à jour par l’institut.</p>
+          </div>
+
+          <div class="booking-step">
+            <div class="selected-service" id="selectedService">
+              <p class="muted">Aucune prestation sélectionnée.</p>
+            </div>
+          </div>
+
+          <div class="booking-step">
+            <div class="calendar" id="calendar"></div>
+          </div>
+
+          <div class="booking-step">
+            <h3 class="subhead">Créneaux</h3>
+            <div class="timeslots" id="timeslots"></div>
+          </div>
+
+          <div class="booking-actions">
+            <button id="addToCartBtn" class="btn btn-primary" type="button" disabled>Ajouter au panier</button>
+            <p class="fineprint">Une confirmation vous sera envoyée après validation.</p>
+          </div>
+        </div>
+
+        <div class="panel panel--small">
+          <div class="panel__head">
+            <h2 class="panel__title">Aide</h2>
+            <p class="panel__sub">Besoin d’un conseil ?</p>
+          </div>
+          <div class="contact-mini">
+            <a class="btn btn-ghost" href="contact.html">Contacter l’institut</a>
+            <a class="btn btn-ghost" href="expertise.html">Découvrir l’expertise</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Panier (drawer) -->
+<button class="cart-fab" id="cartFab" type="button" aria-label="Ouvrir le panier">
+  <span class="cart-fab__label">Panier</span>
+  <span class="cart-fab__count" id="cartCount">0</span>
+</button>
+
+<div class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawer__overlay" data-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Panier">
+    <div class="drawer__head">
+      <h2>Votre réservation</h2>
+      <button class="icon-btn" type="button" data-close aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body">
+      <div id="cartItems" class="cart-items"></div>
+    </div>
+    <div class="drawer__foot">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">0,00 €</strong>
+      </div>
+      <button class="btn btn-primary" id="checkoutBtn" type="button" disabled>Envoyer ma demande de réservation</button>
+          </div>
+  </div>
+</div>
+
+<!-- Checkout (modal) -->
+<div class="modal" id="checkoutModal" aria-hidden="true">
+  <div class="modal__overlay" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Votre demande de réservation">
+    <div class="modal__head">
+      <h2>Votre demande de réservation</h2>
+      <button class="icon-btn" type="button" data-close aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form class="modal__body" id="checkoutForm">
+      <div class="form-grid">
+        <label class="field">
+          <span>Nom</span>
+          <input required name="name" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input required type="email" name="email" autocomplete="email" />
+        </label>
+        <label class="field">
+          <span>Téléphone</span>
+          <input required name="phone" autocomplete="tel" />
+        </label>
+      </div>
+
+      <div class="payment">
+        <p class="subhead">Moyen de paiement souhaité</p>
+        <div class="payment-methods">
+          <label class="pm"><input type="radio" name="pm" value="Empreinte bancaire" checked /> <span>Empreinte bancaire</span></label>
+          <label class="pm"><input type="radio" name="pm" value="Espèces" /> <span>Espèces</span></label>
+          <label class="pm"><input type="radio" name="pm" value="Virement" /> <span>Virement</span></label>
+          <label class="pm"><input type="radio" name="pm" value="Carte bancaire" /> <span>Carte bancaire</span></label>
+        </div>
+        <p class="fineprint">Le paiement sera finalisé en institut lors de votre rendez-vous.</p>
+      </div>
+
+      <label class="checkbox">
+        <input type="checkbox" required />
+        <span>J’accepte les conditions de réservation et d’annulation.</span>
+      </label>
+
+      <button class="btn btn-primary btn-block" type="submit">Envoyer ma demande</button>
+
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+
+<footer class="site-footer site-footer--dark">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="footer-brand-img" />
+      <span class="footer-baseline">Soin · Beauté · Infusions</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Navigation</div>
+      <a href="expertise.html">Expertise</a>
+      <a href="menu.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="contact.html">Contact</a>
+      <a href="menu.html#reservation">Prendre RDV</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Infos</div>
+      <a href="contact.html">Nous contacter</a>
+          </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Peace of Mind Institut — Tous droits réservés.</span>
+    <span>Gradignan, Bordeaux</span>
+  </div>
+</footer>
+<script src="./assets/booking.js"></script>
+
+</body>
+</html>
