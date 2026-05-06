@@ -1460,3 +1460,30 @@ body{overflow-y:auto;}
 @media (max-width: 560px) {
   .hero-editorial-logo { max-width: min(300px, 84vw); }
 }
+
+
+/* Phase 2A/2B — formulaires statiques sécurisés */
+.hp-field{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+.btn[disabled],
+button[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none;
+}
+.form-result{
+  margin-top:14px;
+  color:var(--muted);
+  font-size:14px;
+}
+.form-result.is-success{color:var(--primary)}
+.form-result.is-error{color:#8a2f22}
+.legal-page .card p{margin-top:0}
+.legal-page .list li{margin:8px 0}

@@ -1,105 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Institut mixte soins - beauté - infusions shop | Peace of Mind</title>
-<meta name="description" content="Peace of Mind Institut — soins, beauté & infusions. Réservation en ligne.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#4B2E23" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+  <title>Maintenance — Peace of Mind Institut</title>
+  <meta name="description" content="Peace of Mind Institut est actuellement en cours de finalisation. Le parcours de réservation sera bientôt disponible." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
+
+  <style>
+    :root {
+      --cream: #FAF6F1;
+      --ivory: #F3EDE5;
+      --brun: #4A2E1E;
+      --brun-soft: #7D5A46;
+      --accent: #C8A07A;
+      --nude: #D9CCC0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(200, 160, 122, 0.14), transparent 34%),
+        linear-gradient(135deg, var(--cream), var(--ivory));
+      color: var(--brun);
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(24px, 5vw, 72px);
+      text-align: center;
+    }
+
+    main {
+      width: min(100%, 760px);
+      border: 1px solid rgba(125, 90, 70, 0.18);
+      background: rgba(250, 246, 241, 0.72);
+      padding: clamp(36px, 7vw, 84px) clamp(24px, 6vw, 72px);
+      box-shadow: 0 24px 70px rgba(74, 46, 30, 0.08);
+    }
+
+    .logo {
+      width: clamp(130px, 22vw, 220px);
+      height: auto;
+      margin: 0 auto clamp(28px, 4vw, 42px);
+      display: block;
+    }
+
+    .tag {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      font-size: clamp(2.5rem, 8vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      margin-bottom: clamp(22px, 4vw, 34px);
+    }
+
+    p {
+      color: var(--brun-soft);
+      line-height: 1.75;
+      font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .divider {
+      width: 72px;
+      height: 1px;
+      background: var(--nude);
+      margin: clamp(26px, 4vw, 42px) auto;
+    }
+
+    .location {
+      display: block;
+      margin-top: 18px;
+      color: var(--brun-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        align-items: stretch;
+      }
+
+      main {
+        min-height: calc(100vh - 48px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+<body>
+  <main>
+    <img class="logo" src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind Institut" />
 
-<body class="has-book-intro">
+    <span class="tag">Maintenance</span>
 
-<!-- Animation d’ouverture -->
-<div class="book-intro" id="bookIntro" aria-hidden="true">
-  <div class="book-intro__logo">
-    <img src="assets/logo-peace-of-mind-final.png" alt="" />
-  </div>
-  <div class="book-intro__panel book-intro__panel--left"></div>
-  <div class="book-intro__panel book-intro__panel--right"></div>
-</div>
+    <h1>Peace of Mind Institut</h1>
 
-<header class="site-header site-header--center">
-  <div class="container header-centered">
-    <a class="brand brand--center" href="index.html" aria-label="Accueil">
-      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="brand-logo brand-logo--center" />
-    </a>
+    <p>
+      Le site est actuellement en cours de finalisation afin de vous offrir un parcours de réservation plus clair, sécurisé et personnalisé.
+    </p>
 
-    <nav class="nav nav--center" aria-label="Navigation principale">
-      <a href="expertise.html">Expertise</a>
-      <a href="menu.html">Menu</a>
-      <a href="collection.html">Collection</a>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-primary nav-cta" href="menu.html#reservation">Prendre RDV</a>
-    </nav>
-  </div>
-</header>
+    <div class="divider"></div>
 
-<main>
-  <section class="hero--editorial">
-    <div class="hero-editorial-lockup">
-      <p class="hero-eyebrow">Institut · Gradignan, Bordeaux</p>
-      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="hero-editorial-logo" />
-      <span class="hero-rule" aria-hidden="true"></span>
-      <p class="hero-tagline">Soin · Beauté · Infusions</p>
-      <div class="hero-editorial-cta">
-        <a class="btn btn-primary" href="menu.html#reservation">Prendre RDV</a>
-        <a class="btn btn-ghost" href="collection.html">Collection</a>
-      </div>
-    </div>
-    <div class="hero-scroll-hint" aria-hidden="true">Descendre</div>
-  </section>
-</main>
+    <p>
+      Le service de réservation sera bientôt disponible.
+      Merci pour votre patience.
+    </p>
 
-<footer class="site-footer site-footer--dark">
-  <div class="container footer-inner">
-    <div class="footer-col">
-      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind" class="footer-brand-img" />
-      <span class="footer-baseline">Soin · Beauté · Infusions</span>
-    </div>
-    <div class="footer-col">
-      <div class="footer-title">Navigation</div>
-      <a href="expertise.html">Expertise</a>
-      <a href="menu.html">Menu</a>
-      <a href="collection.html">Collection</a>
-      <a href="contact.html">Contact</a>
-      <a href="menu.html#reservation">Prendre RDV</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-title">Infos</div>
-      <a href="contact.html">Nous contacter</a>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© 2026 Peace of Mind Institut — Tous droits réservés.</span>
-    <span>Gradignan, Bordeaux</span>
-  </div>
-</footer>
-
-<script>
-  (function () {
-    function finishIntro() {
-      document.body.classList.add('intro-done');
-    }
-
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      finishIntro();
-      return;
-    }
-
-    window.addEventListener('load', function () {
-      setTimeout(finishIntro, 2200);
-    });
-
-    // Fallback de sécurité : l’intro ne doit jamais bloquer la page.
-    setTimeout(finishIntro, 3000);
-  })();
-</script>
-
+    <span class="location">Gradignan, Bordeaux</span>
+  </main>
 </body>
 </html>

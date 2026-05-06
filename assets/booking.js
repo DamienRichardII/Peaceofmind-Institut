@@ -6,6 +6,7 @@
     settings: "pom_admin_settings",
     bookings: "pom_bookings",
     cart: "pom_cart",
+    bookingSubmissions: "pom_booking_submissions",
   };
 
   const defaultSettings = {
@@ -445,6 +446,37 @@
     el.setAttribute("aria-hidden", "true");
   }
 
+  function getConfigValue(key, fallback) {
+    return (window.POM_CONFIG && window.POM_CONFIG[key]) || fallback;
+  }
+
+  function appendLocalSubmission(key, payload) {
+    const current = loadJSON(key, []);
+    current.unshift(payload);
+    saveJSON(key, current.slice(0, 20));
+  }
+
+  async function postStaticForm(endpoint, payload) {
+    if (!endpoint) throw new Error("Endpoint non configuré");
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error("Envoi impossible");
+    return res;
+  }
+
+  function setSubmitState(form, isSending) {
+    const btn = form.querySelector('[type="submit"]');
+    if (!btn) return;
+    btn.disabled = isSending;
+    btn.textContent = isSending ? "Envoi en cours…" : "Envoyer ma demande";
+  }
+
   function wireDrawer() {
     $("#cartFab").addEventListener("click", openDrawer);
     $$("[data-close]", $("#cartDrawer")).forEach(el => el.addEventListener("click", closeDrawer));
@@ -463,52 +495,119 @@
       if (e.target.name !== "pm") return;
       const v = e.target.value;
       const cardBox = $("#cardBox");
-      cardBox.style.display = (v === "Carte bancaire" || v === "Empreinte bancaire") ? "block" : "none";
+      if (cardBox) {
+        cardBox.style.display = (v === "Carte bancaire" || v === "Empreinte bancaire") ? "block" : "none";
+      }
     });
 
-    form.addEventListener("submit", (e) => {
+    form.dataset.loadedAt = String(Date.now());
+    let isSubmitting = false;
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (state.cart.length === 0) return;
+      if (isSubmitting || state.cart.length === 0) return;
 
       const fd = new FormData(form);
+      const honeypot = (fd.get("website") || "").toString().trim();
+      const loadedAt = Number(form.dataset.loadedAt || Date.now());
+      if (honeypot || Date.now() - loadedAt < 2000) {
+        toast("Votre demande n’a pas pu être envoyée automatiquement. Merci de contacter l’institut via la page Contact.");
+        return;
+      }
+
       const bookingMeta = {
         name: (fd.get("name") || "").toString().trim(),
         email: (fd.get("email") || "").toString().trim(),
         phone: (fd.get("phone") || "").toString().trim(),
         paymentMethod: (fd.get("pm") || "Empreinte bancaire").toString(),
+        consentAccepted: fd.get("consent") === "accepted",
       };
-      if (!bookingMeta.name || !bookingMeta.email || !bookingMeta.phone) return;
+      if (!bookingMeta.name || !bookingMeta.email || !bookingMeta.phone || !bookingMeta.consentAccepted) return;
 
-      // Save booking(s)
       const now = new Date().toISOString();
-      state.cart.forEach(it => {
-        state.bookings.push({
-          id: it.id,
-          serviceId: it.serviceId,
-          serviceName: it.name,
-          date: it.date,
-          start: it.start,
-          end: it.end,
-          durationMin: it.durationMin,
-          priceEur: it.priceEur,
-          paymentMethod: bookingMeta.paymentMethod,
-          customer: {
-            name: bookingMeta.name,
-            email: bookingMeta.email,
-            phone: bookingMeta.phone,
-          },
-          createdAt: now,
+      const items = state.cart.map(it => ({
+        id: it.id,
+        serviceId: it.serviceId,
+        serviceName: it.name,
+        category: (state.services.find(s => s.id === it.serviceId) || {}).category || "",
+        durationMin: it.durationMin,
+        priceEur: it.priceEur,
+        date: it.date,
+        start: it.start,
+        end: it.end
+      }));
+
+      const payload = {
+        _subject: "Nouvelle demande de réservation — Peace of Mind",
+        source: getConfigValue("SOURCE_BOOKING", "Peace of Mind V2"),
+        submittedAt: now,
+        customerName: bookingMeta.name,
+        customerEmail: bookingMeta.email,
+        customerPhone: bookingMeta.phone,
+        paymentMethod: bookingMeta.paymentMethod,
+        totalCartEur: cartTotal(),
+        consentAccepted: bookingMeta.consentAccepted,
+        services: items,
+        message: items.map(it => `${it.serviceName} — ${it.category} — ${it.durationMin} min — ${it.priceEur} € — ${it.date} ${it.start}-${it.end}`).join("\n")
+      };
+
+      isSubmitting = true;
+      setSubmitState(form, true);
+
+      try {
+        await postStaticForm(getConfigValue("BOOKING_WEBHOOK_URL", ""), payload);
+
+        items.forEach(it => {
+          state.bookings.push({
+            id: it.id,
+            serviceId: it.serviceId,
+            serviceName: it.serviceName,
+            category: it.category,
+            date: it.date,
+            start: it.start,
+            end: it.end,
+            durationMin: it.durationMin,
+            priceEur: it.priceEur,
+            paymentMethod: bookingMeta.paymentMethod,
+            customer: {
+              name: bookingMeta.name,
+              email: bookingMeta.email,
+              phone: bookingMeta.phone,
+            },
+            createdAt: now,
+          });
         });
-      });
-      persistBookings();
+        persistBookings();
+        appendLocalSubmission(LS.bookingSubmissions, {
+          submittedAt: now,
+          source: payload.source,
+          customerEmail: bookingMeta.email,
+          customerPhone: bookingMeta.phone,
+          totalCartEur: payload.totalCartEur,
+          services: items.map(it => ({
+            serviceName: it.serviceName,
+            category: it.category,
+            date: it.date,
+            start: it.start,
+            end: it.end,
+            priceEur: it.priceEur
+          }))
+        });
 
-      // clear
-      state.cart = [];
-      persistCart();
-      updateCartUI();
-      closeModal();
+        state.cart = [];
+        persistCart();
+        updateCartUI();
+        form.reset();
+        form.dataset.loadedAt = String(Date.now());
+        closeModal();
 
-      toast("Votre demande a bien été préparée. L'institut vous confirmera le créneau et le paiement.");
+        toast("Votre demande de réservation a bien été envoyée. L’institut vous confirmera le créneau par email ou téléphone.");
+      } catch (err) {
+        toast("Votre demande n’a pas pu être envoyée automatiquement. Merci de contacter l’institut via la page Contact.");
+      } finally {
+        isSubmitting = false;
+        setSubmitState(form, false);
+      }
     });
   }
 

@@ -1,0 +1,466 @@
+{
+  "updatedFrom": "Peace of Mind",
+  "services": [
+    {
+      "id": "ess_nailart",
+      "category": "ESSENTIEL",
+      "group": "Essentiel",
+      "name": "Nail art • par ongle",
+      "durationMin": 5,
+      "priceEur": 0.0,
+      "description": "À sélectionner avec une prestation ongles."
+    },
+    {
+      "id": "ess_questionnaire",
+      "category": "ESSENTIEL",
+      "group": "Essentiel",
+      "name": "Questionnaire médical (avant soin)",
+      "durationMin": 5,
+      "priceEur": 0.0,
+      "description": "À remplir le jour du rendez-vous."
+    },
+    {
+      "id": "ess_bilan",
+      "category": "ESSENTIEL",
+      "group": "Essentiel",
+      "name": "Bilan pré-soin (peau)",
+      "durationMin": 10,
+      "priceEur": 15.0,
+      "description": "Évaluation rapide, conseils personnalisés."
+    },
+    {
+      "id": "soin_microneedling_face",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Microneedling visage",
+      "durationMin": 45,
+      "priceEur": 80.0,
+      "description": "Soin profond personnalisé."
+    },
+    {
+      "id": "soin_microneedling_face_neck",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Microneedling visage et cou",
+      "durationMin": 60,
+      "priceEur": 100.0,
+      "description": ""
+    },
+    {
+      "id": "soin_peeling_acne",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Peeling : No more acne",
+      "durationMin": 40,
+      "priceEur": 80.0,
+      "description": "À base d’acide glycolique."
+    },
+    {
+      "id": "soin_peeling_glow",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Peeling : Glow peel",
+      "durationMin": 40,
+      "priceEur": 100.0,
+      "description": ""
+    },
+    {
+      "id": "soin_peeling_melano",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Peeling : Melano peel",
+      "durationMin": 40,
+      "priceEur": 100.0,
+      "description": "Lutte contre l’hyperpigmentation."
+    },
+    {
+      "id": "soin_peeling_rice",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Peeling : Rice peel",
+      "durationMin": 40,
+      "priceEur": 120.0,
+      "description": ""
+    },
+    {
+      "id": "soin_aquagold",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Aqua gold",
+      "durationMin": 50,
+      "priceEur": 120.0,
+      "description": ""
+    },
+    {
+      "id": "soin_newskin",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "New skin",
+      "durationMin": 80,
+      "priceEur": 150.0,
+      "description": "Soin profond + jelly mask."
+    },
+    {
+      "id": "soin_plasmalift_face",
+      "category": "SOINS",
+      "group": "Soins profonds • Visage",
+      "name": "Plasma lift",
+      "durationMin": 60,
+      "priceEur": 190.0,
+      "description": "Technique non invasive."
+    },
+    {
+      "id": "corps_jellyv",
+      "category": "SOINS",
+      "group": "Soins profonds • Corps",
+      "name": "Jelly V • Soin pubis",
+      "durationMin": 45,
+      "priceEur": 85.0,
+      "description": "Poils incarnés & hyperpigmentation."
+    },
+    {
+      "id": "corps_jellyb",
+      "category": "SOINS",
+      "group": "Soins profonds • Corps",
+      "name": "Jelly B • Soin fessier",
+      "durationMin": 45,
+      "priceEur": 90.0,
+      "description": "Boutons, cellulite & hyperpigmentation."
+    },
+    {
+      "id": "corps_torsoneedling",
+      "category": "SOINS",
+      "group": "Soins profonds • Corps",
+      "name": "Torso needling",
+      "durationMin": 60,
+      "priceEur": 100.0,
+      "description": "Microneedling dos ou torse."
+    },
+    {
+      "id": "corps_aquagold",
+      "category": "SOINS",
+      "group": "Soins profonds • Corps",
+      "name": "Aqua gold corps",
+      "durationMin": 60,
+      "priceEur": 120.0,
+      "priceFrom": true,
+      "description": "Microneedling traditionnel + feuilles d’or."
+    },
+    {
+      "id": "corps_plasmalift",
+      "category": "SOINS",
+      "group": "Soins profonds • Corps",
+      "name": "Plasma lift corps",
+      "durationMin": 60,
+      "priceEur": 190.0,
+      "priceFrom": true,
+      "description": ""
+    },
+    {
+      "id": "pig_grain",
+      "category": "PIGMENTATION",
+      "group": "Freckles & Grain de beauté",
+      "name": "Grain de beauté",
+      "durationMin": 30,
+      "priceEur": 50.0,
+      "description": ""
+    },
+    {
+      "id": "pig_freckles_nez",
+      "category": "PIGMENTATION",
+      "group": "Freckles & Grain de beauté",
+      "name": "Freckles NEZ",
+      "durationMin": 45,
+      "priceEur": 69.0,
+      "description": "Pigments vegan — effet naturel."
+    },
+    {
+      "id": "pig_freckles_nez_pom",
+      "category": "PIGMENTATION",
+      "group": "Freckles & Grain de beauté",
+      "name": "Freckles NEZ & POMMETTES",
+      "durationMin": 90,
+      "priceEur": 90.0,
+      "description": ""
+    },
+    {
+      "id": "pig_freckles_visage",
+      "category": "PIGMENTATION",
+      "group": "Freckles & Grain de beauté",
+      "name": "Freckles VISAGE",
+      "durationMin": 120,
+      "priceEur": 120.0,
+      "description": ""
+    },
+    {
+      "id": "pig_ret_grain",
+      "category": "PIGMENTATION",
+      "group": "Retouches",
+      "name": "Retouche grain de beauté",
+      "durationMin": 20,
+      "priceEur": 25.0,
+      "description": ""
+    },
+    {
+      "id": "pig_ret_nez",
+      "category": "PIGMENTATION",
+      "group": "Retouches",
+      "name": "Retouche NEZ",
+      "durationMin": 60,
+      "priceEur": 35.0,
+      "description": ""
+    },
+    {
+      "id": "pig_ret_nez_pom",
+      "category": "PIGMENTATION",
+      "group": "Retouches",
+      "name": "Retouche NEZ & POMMETTES",
+      "durationMin": 40,
+      "priceEur": 45.0,
+      "description": ""
+    },
+    {
+      "id": "pig_ret_visage",
+      "category": "PIGMENTATION",
+      "group": "Retouches",
+      "name": "Retouche VISAGE",
+      "durationMin": 45,
+      "priceEur": 60.0,
+      "description": ""
+    },
+    {
+      "id": "blanchiment_1",
+      "category": "SOINS",
+      "group": "Blanchiment dentaire",
+      "name": "Blanchiment dentaire • 1 séance",
+      "durationMin": 60,
+      "priceEur": 140.0,
+      "description": "Soin esthétique du sourire."
+    },
+    {
+      "id": "ongles_pose_sm",
+      "category": "ONGLES",
+      "group": "Pose complète gel",
+      "name": "Taille S ou M (pose complète)",
+      "durationMin": 110,
+      "priceEur": 60.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_pose_l",
+      "category": "ONGLES",
+      "group": "Pose complète gel",
+      "name": "Taille L (pose complète)",
+      "durationMin": 120,
+      "priceEur": 70.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_pose_xl",
+      "category": "ONGLES",
+      "group": "Pose complète gel",
+      "name": "Taille XL &+ (pose complète)",
+      "durationMin": 135,
+      "priceEur": 80.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_fill_sm",
+      "category": "ONGLES",
+      "group": "Remplissage gel",
+      "name": "Taille S ou M (remplissage)",
+      "durationMin": 90,
+      "priceEur": 50.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_fill_l",
+      "category": "ONGLES",
+      "group": "Remplissage gel",
+      "name": "Taille L (remplissage)",
+      "durationMin": 90,
+      "priceEur": 60.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_fill_xl",
+      "category": "ONGLES",
+      "group": "Remplissage gel",
+      "name": "Taille XL &+ (remplissage)",
+      "durationMin": 90,
+      "priceEur": 128.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_gainage",
+      "category": "ONGLES",
+      "group": "Manucure soin & gel",
+      "name": "Gainage gel",
+      "durationMin": 80,
+      "priceEur": 72.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_semi",
+      "category": "ONGLES",
+      "group": "Manucure soin & gel",
+      "name": "Semi-permanent",
+      "durationMin": 30,
+      "priceEur": 36.0,
+      "description": ""
+    },
+    {
+      "id": "ongles_manicare",
+      "category": "ONGLES",
+      "group": "Manucure soin & gel",
+      "name": "Mani Care • Soin",
+      "durationMin": 20,
+      "priceEur": 19.0,
+      "description": ""
+    },
+    {
+      "id": "na_sticker",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Sticker ou strass (par ongle)",
+      "durationMin": 10,
+      "priceEur": 0.5,
+      "description": ""
+    },
+    {
+      "id": "na_chrome",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Chrome (par ongle)",
+      "durationMin": 15,
+      "priceEur": 1.0,
+      "description": ""
+    },
+    {
+      "id": "na_cat",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Cat eye (par ongle)",
+      "durationMin": 15,
+      "priceEur": 1.0,
+      "description": ""
+    },
+    {
+      "id": "na_french",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "French (par ongle)",
+      "durationMin": 15,
+      "priceEur": 1.0,
+      "description": ""
+    },
+    {
+      "id": "na_baby",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Baby boomer (par ongle)",
+      "durationMin": 20,
+      "priceEur": 1.0,
+      "description": ""
+    },
+    {
+      "id": "na_marbre",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Marbre / Animalier / 3D (par ongle)",
+      "durationMin": 25,
+      "priceEur": 2.0,
+      "description": ""
+    },
+    {
+      "id": "na_casse",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Ongle cassé",
+      "durationMin": 5,
+      "priceEur": 3.0,
+      "description": ""
+    },
+    {
+      "id": "na_forme",
+      "category": "ONGLES",
+      "group": "Nail art • options",
+      "name": "Changement de forme",
+      "durationMin": 10,
+      "priceEur": 5.0,
+      "description": ""
+    },
+    {
+      "id": "dep_gel",
+      "category": "ONGLES",
+      "group": "Dépose",
+      "name": "Dépose gel avec soin",
+      "durationMin": 30,
+      "priceEur": 25.0,
+      "description": ""
+    },
+    {
+      "id": "dep_semi_repose",
+      "category": "ONGLES",
+      "group": "Dépose",
+      "name": "Dépose semi-permanent SI repose",
+      "durationMin": 15,
+      "priceEur": 0.0,
+      "description": "Gratuit."
+    },
+    {
+      "id": "dep_semi",
+      "category": "ONGLES",
+      "group": "Dépose",
+      "name": "Dépose semi-permanent SANS repose",
+      "durationMin": 15,
+      "priceEur": 7.0,
+      "description": ""
+    },
+    {
+      "id": "pedi_gainage",
+      "category": "ONGLES",
+      "group": "Pédicure",
+      "name": "Gainage gel (pieds)",
+      "durationMin": 45,
+      "priceEur": 45.0,
+      "description": ""
+    },
+    {
+      "id": "pedi_semi",
+      "category": "ONGLES",
+      "group": "Pédicure",
+      "name": "Semi-permanent (pieds)",
+      "durationMin": 40,
+      "priceEur": 36.0,
+      "description": ""
+    },
+    {
+      "id": "pedi_depose",
+      "category": "ONGLES",
+      "group": "Pédicure",
+      "name": "Dépose semi-permanent (pieds)",
+      "durationMin": 15,
+      "priceEur": 7.0,
+      "description": ""
+    },
+    {
+      "id": "infusion_tasting",
+      "category": "INFUSIONS",
+      "group": "Infusions",
+      "name": "Infusion dégustation (sur place)",
+      "durationMin": 10,
+      "priceEur": 4.0,
+      "description": "Infusions de fleurs véritables."
+    },
+    {
+      "id": "infusion_coffret",
+      "category": "INFUSIONS",
+      "group": "Infusions",
+      "name": "Coffret d’infusions (boutique)",
+      "durationMin": 10,
+      "priceEur": 24.0,
+      "description": "Sélection délicate — santé & réconfort."
+    }
+  ]
+}

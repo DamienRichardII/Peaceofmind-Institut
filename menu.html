@@ -38,7 +38,7 @@
     <div class="container">
       <p class="kicker">Menu</p>
       <h1>Réservation directe</h1>
-      <p class="page-lead">Choisissez une prestation, une date, un créneau — puis validez en ligne.</p>
+      <p class="page-lead">Choisissez une prestation, une date, un créneau — puis envoyez votre demande à l’institut.</p>
     </div>
   </section>
 
@@ -88,7 +88,7 @@
 
           <div class="booking-actions">
             <button id="addToCartBtn" class="btn btn-primary" type="button" disabled>Ajouter au panier</button>
-            <p class="fineprint">Une confirmation vous sera envoyée après validation.</p>
+            <p class="fineprint">Votre demande sera transmise à l’institut. Le créneau sera confirmé après validation.</p>
           </div>
         </div>
 
@@ -147,7 +147,7 @@
       </button>
     </div>
 
-    <form class="modal__body" id="checkoutForm">
+    <form class="modal__body" id="checkoutForm" data-loaded-at="">
       <div class="form-grid">
         <label class="field">
           <span>Nom</span>
@@ -163,6 +163,13 @@
         </label>
       </div>
 
+      <div class="hp-field" aria-hidden="true">
+        <label for="bookingWebsite">Site web</label>
+        <input id="bookingWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <p class="fineprint">Votre demande sera transmise à l’institut. Le créneau sera confirmé après validation.</p>
+
       <div class="payment">
         <p class="subhead">Moyen de paiement souhaité</p>
         <div class="payment-methods">
@@ -175,7 +182,7 @@
       </div>
 
       <label class="checkbox">
-        <input type="checkbox" required />
+        <input type="checkbox" name="consent" value="accepted" required />
         <span>J’accepte les conditions de réservation et d’annulation.</span>
       </label>
 
@@ -205,13 +212,16 @@
     <div class="footer-col">
       <div class="footer-title">Infos</div>
       <a href="contact.html">Nous contacter</a>
-          </div>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    </div>
   </div>
   <div class="container footer-bottom">
     <span>© 2026 Peace of Mind Institut — Tous droits réservés.</span>
     <span>Gradignan, Bordeaux</span>
   </div>
 </footer>
+<script src="./assets/config.js"></script>
 <script src="./assets/booking.js"></script>
 
 </body>
